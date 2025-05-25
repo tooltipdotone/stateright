@@ -46,23 +46,31 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
         }
     }, [isLoaded]);
 
+     const allowedCountries = [
+        'AF', 'AL', 'AM', 'AZ', 'BY', 'BA', 'BG', 'HR', 'CY', 'CZ', 'DK',
+        'EE', 'FI', 'GE', 'DE', 'GR', 'HU', 'IS', 'KZ', 'KG', 'LV', 'LT',
+        'MN', 'ME', 'MK', 'PL', 'MD', 'RO', 'RU', 'RS', 'SK', 'SI', 'SE',
+        'TJ', 'TR', 'TM', 'UA', 'UZ'
+    ];
+    const getCountryCodeFromPlace = (place) => {
+        if (!place?.address_components) return null;
+
+        const countryComponent = place.address_components.find(comp =>
+            comp.types.includes("country")
+        );
+
+        return countryComponent?.short_name?.toUpperCase() || null;
+    };
     const handlePlacesChanged = () => {
         const places = searchBoxRef.current.getPlaces();
         if (places && places.length > 0) {
             const place = places[0];
 
-        const allowedCountries = [
-        'AF', 'AL', 'AM', 'AZ', 'BY', 'BA', 'BG', 'HR', 'CY', 'CZ', 'DK',
-        'EE', 'FI', 'GE', 'DE', 'GR', 'HU', 'IS', 'KZ', 'KG', 'LV', 'LT',
-        'MN', 'ME', 'MK', 'PL', 'MD', 'RO', 'RU', 'RS', 'SK', 'SI', 'SE',
-        'TJ', 'TR', 'TM', 'UA', 'UZ'
-        ];
-
-        const countryComponent = place.address_components.find(comp => comp.types.includes("country"));
-        const countryCode = countryComponent?.short_name.toUpperCase();
+        
+        const countryCode = getCountryCodeFromPlace(place)
 
         if (!allowedCountries.includes(countryCode)) {
-            toast.error("This location is not supported in your region.");
+            toast.error("Vidaki does not offer platform coverage in that location.");
             setIsValidLocation(false);
             return;
         }
@@ -73,6 +81,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                 city: place.address_components.find(comp => comp.types.includes("locality"))?.long_name,
                 state: place.address_components.find(comp => comp.types.includes("administrative_area_level_1"))?.long_name,
                 country: place.address_components.find(comp => comp.types.includes("country"))?.long_name,
+                countryCode : countryCode
             };
             const newPosition = {
                 lat: place.geometry.location.lat(),
@@ -106,6 +115,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                         let state = '';
                         let country = '';
                         let address = '';
+                        let countryCode = '';
 
                         response.data.results.forEach(result => {
                             const addressComponents = result.address_components;
@@ -116,9 +126,14 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                             if (!city) city = getAddressComponent("locality");
                             if (!state) state = getAddressComponent("administrative_area_level_1");
                             if (!country) country = getAddressComponent("country");
+                            if (!countryCode) countryCode = getCountryCodeFromPlace(result);
                             if (!address) address = result.formatted_address;
                         });
-
+                        if (!allowedCountries.includes(countryCode)) {
+                            toast.error("Vidaki does not offer platform coverage in that location.");
+                            setIsValidLocation(false);
+                            return;
+                        }
                         const cityData = {
                             lat: locationData.latitude,
                             long: locationData.longitude,
@@ -159,6 +174,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
             let state = '';
             let country = '';
             let address = '';
+            let countryCode = '';
             response.data.results.forEach(result => {
                 const addressComponents = result.address_components;
                 const getAddressComponent = (type) => {
@@ -168,6 +184,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                 if (!city) city = getAddressComponent("locality");
                 if (!state) state = getAddressComponent("administrative_area_level_1");
                 if (!country) country = getAddressComponent("country");
+                if (!countryCode) countryCode = getCountryCodeFromPlace(result);
                 if (!address) address = result.formatted_address;
             });
             const locationData = {
@@ -176,7 +193,8 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                 city,
                 state,
                 country,
-                formatted_address: address
+                formatted_address: address,
+                countryCode
             };
             setSelectedCity(locationData);
             setIsValidLocation(true);
@@ -200,7 +218,11 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
     const handleUpdateLocation = (e) => {
         e.preventDefault();
         if (selectedCity) {
-
+            if (!allowedCountries.includes(selectedCity?.countryCode)) {
+                toast.error("Vidaki does not offer platform coverage in that location.");
+                setIsValidLocation(false);
+                return;
+            }
             if (isValidLocation || (cityData && cityData.lat && cityData.long)) {
                 dispatch(setKilometerRange(KmRange))
                 saveCity(selectedCity);
