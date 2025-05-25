@@ -50,6 +50,23 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
         const places = searchBoxRef.current.getPlaces();
         if (places && places.length > 0) {
             const place = places[0];
+
+        const allowedCountries = [
+        'AF', 'AL', 'AM', 'AZ', 'BY', 'BA', 'BG', 'HR', 'CY', 'CZ', 'DK',
+        'EE', 'FI', 'GE', 'DE', 'GR', 'HU', 'IS', 'KZ', 'KG', 'LV', 'LT',
+        'MN', 'ME', 'MK', 'PL', 'MD', 'RO', 'RU', 'RS', 'SK', 'SI', 'SE',
+        'TJ', 'TR', 'TM', 'UA', 'UZ'
+        ];
+
+        const countryComponent = place.address_components.find(comp => comp.types.includes("country"));
+        const countryCode = countryComponent?.short_name.toUpperCase();
+
+        if (!allowedCountries.includes(countryCode)) {
+            toast.error("This location is not supported in your region.");
+            setIsValidLocation(false);
+            return;
+        }
+
             const cityData = {
                 lat: place.geometry.location.lat(),
                 long: place.geometry.location.lng(),
