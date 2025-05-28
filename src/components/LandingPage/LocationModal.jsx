@@ -11,6 +11,8 @@ import toast from 'react-hot-toast';
 import { getKilometerRange, saveCity, setKilometerRange } from '@/redux/reuducer/locationSlice';
 import { settingsData } from '@/redux/reuducer/settingSlice';
 import LocationWithRadius from '../Layout/LocationWithRadius';
+import { getLanguageApi } from '@/utils/api';
+import { setCurrentLanguage } from '@/redux/reuducer/languageSlice';
 
 
 const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
@@ -61,20 +63,36 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
 
         return countryComponent?.short_name?.toUpperCase() || null;
     };
+    const switchLanguage = async (countryCode) => {
+        const country  = settings?.languages?.find(lng => lng.code?.toUpperCase() == countryCode?.toUpperCase());
+        if(country){
+            const language_code = country.code; 
+            try {
+                    const res = await getLanguageApi.getLanguage({ language_code, type: 'web' });
+                    if (res?.data?.error === true) {
+                        toast.error(res?.data?.message)
+                    }
+                    else {
+                       
+                        dispatch(setCurrentLanguage(res?.data?.data));
+                    }
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
     const handlePlacesChanged = () => {
         const places = searchBoxRef.current.getPlaces();
         if (places && places.length > 0) {
             const place = places[0];
 
-        
-        const countryCode = getCountryCodeFromPlace(place)
+            const countryCode = getCountryCodeFromPlace(place);
 
         if (!allowedCountries.includes(countryCode)) {
             toast.error("Vidaki does not offer platform coverage in that location.");
             setIsValidLocation(false);
             return;
         }
-
             const cityData = {
                 lat: place.geometry.location.lat(),
                 long: place.geometry.location.lng(),
@@ -83,6 +101,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                 country: place.address_components.find(comp => comp.types.includes("country"))?.long_name,
                 countryCode : countryCode
             };
+            
             const newPosition = {
                 lat: place.geometry.location.lat(),
                 lng: place.geometry.location.lng(),
@@ -134,6 +153,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                             setIsValidLocation(false);
                             return;
                         }
+                        switchLanguage(countryCode);
                         const cityData = {
                             lat: locationData.latitude,
                             long: locationData.longitude,
@@ -223,6 +243,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                 setIsValidLocation(false);
                 return;
             }
+            switchLanguage(selectedCity?.countryCode);
             if (isValidLocation || (cityData && cityData.lat && cityData.long)) {
                 dispatch(setKilometerRange(KmRange))
                 saveCity(selectedCity);
