@@ -54,6 +54,22 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
         'MN', 'ME', 'MK', 'PL', 'MD', 'RO', 'RU', 'RS', 'SK', 'SI', 'SE',
         'TJ', 'TR', 'TM', 'UA', 'UZ'
     ];
+    const languageBackendCode = {
+        "AL": "sq", 
+        "AM": "hy",
+        "BY": "be",
+        "BA": "bs",
+        "GR": "el",
+        "DK": "da",
+        "EE": "et",
+        "GE": "ka",
+        "KZ": "kk",
+        "RS": "sr",
+        "SI": "sl",
+        "SE": "sv",
+        "TM": "tk",
+        "UA": "uk",
+    }
     const getCountryCodeFromPlace = (place) => {
         if (!place?.address_components) return null;
 
@@ -64,9 +80,14 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
         return countryComponent?.short_name?.toUpperCase() || null;
     };
     const switchLanguage = async (countryCode) => {
-        const country  = settings?.languages?.find(lng => lng.code?.toUpperCase() == countryCode?.toUpperCase());
-        if(country){
-            const language_code = country.code; 
+        let filteredCountry  = settings?.languages?.find(lng => lng.code?.toUpperCase() == countryCode?.toUpperCase());
+        if(!filteredCountry){
+            filteredCountry = {
+             code: languageBackendCode[countryCode] || 'en'
+            }
+        }
+        if(filteredCountry){
+            const language_code = filteredCountry.code; 
             try {
                     const res = await getLanguageApi.getLanguage({ language_code, type: 'web' });
                     if (res?.data?.error === true) {
