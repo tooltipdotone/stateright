@@ -135,17 +135,17 @@ const Footer = () => {
                 <span>{t("orders")}</span>
               </div>
               <div className="footer_links">
-                <Link href={"/about-us"}>
+                <Link href={"/profile/edit-profile"}>
                   <span>{t("myAccount")}</span>
                 </Link>
               </div>
               <div className="footer_links">
-                <Link href={"/contact-us"}>
+                <Link href={"/pages/how-do-i-order"}>
                   <span>{t("howDoIOrder")}</span>
                 </Link>
               </div>
               <div className="footer_links">
-                <Link href={"/contact-us"}>
+                <Link href={"/pages/payment-methods"}>
                   <span>{t("paymentMethods")}</span>
                 </Link>
               </div>
@@ -158,17 +158,17 @@ const Footer = () => {
                 <span>{t("support")}</span>
               </div>
               <div className="footer_links">
-                <Link href={"/about-us"}>
+                <Link href={"/pages/refund-policy"}>
                   <span>{t("refundPolicy")}</span>
                 </Link>
               </div>
               <div className="footer_links">
-                <Link href={"/contact-us"}>
+                <Link href={"/pages/privacy-policy"}>
                   <span>{t("privacyPolicy")}</span>
                 </Link>
               </div>
               <div className="footer_links">
-                <Link href={"/contact-us"}>
+                <Link href={"/pages/terms-and-conditions"}>
                   <span>{t("termsAndConditions")}</span>
                 </Link>
               </div>
@@ -187,19 +187,19 @@ const Footer = () => {
                                             <SlLocationPin size={22} />
                                         </div> */}
                   <div className="footer_links">
-                    <span>{t("shipping")}</span>
+                   <Link href={"/pages/shipping"}>
+                     <span>{t("shipping")}</span>
+                   </Link>
                   </div>
                 </div>
 
                 {settings?.company_email && (
                   <div className="contact_details">
-                    {/* <div className="details_icon">
-                                            <RiMailSendFill size={22} />
-                                        </div> */}
+                
                     <div className="footer_links">
-                      <a href={`mailto:${settings?.company_email}`}>
+                      <Link href={"/blogs"}>
                         <span>{t("smartyBlog")}</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 )}
@@ -219,9 +219,10 @@ const Footer = () => {
                                         </div> */}
 
                     <div className="footer_links">
-                      <a href={`mailto:${settings?.company_email}`}>
+                      <Link href={"/pages/cookies"}>
                         <span>{t("cookies")}</span>
-                      </a>
+                      </Link>
+                  
                     </div>
                   </div>
                 )}
