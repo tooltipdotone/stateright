@@ -1,8 +1,10 @@
 import BreadcrumbComponent from "@/components/Breadcrumb/BreadcrumbComponent";
 import Layout from "@/components/Layout/Layout";
+import { placeholderImage } from "@/utils";
 import axios from "axios";
 import parse, { domToReact } from "html-react-parser";
 import Link from "next/link";
+import Image from "next/image";
 
 export async function generateMetadata({ params }) {
   const page = await getPageDetails(params.slug);
@@ -51,6 +53,16 @@ const SinglePage = async ({ params }) => {
           <BreadcrumbComponent title2={page.title} />
           <div className="container">
             <div className="page_content">
+              {page.image && (
+                <img
+                  src={page?.image}
+                  width="100%"
+                  height="150"
+                  alt="Page Feature Image"
+                  className="my-2"
+                  onErrorCapture={placeholderImage}
+                />
+              )}
               {parse(page.content || "", options)}
             </div>
           </div>
