@@ -59,7 +59,7 @@ const SinglePage = async ({ params }) => {
                   width="100%"
                   height="150"
                   alt="Page Feature Image"
-                  className="my-2"
+                  className="my-2 rounded"
                   onErrorCapture={placeholderImage}
                 />
               )}
