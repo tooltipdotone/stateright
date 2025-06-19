@@ -32,6 +32,8 @@ import { DownOutlined } from '@ant-design/icons';
 import LocationModal from '../LandingPage/LocationModal';
 import { saveOfferData } from '@/redux/reuducer/offerSlice';
 import HeaderCategories from './HeaderCategories';
+import CurrencyDropdown from '../HeaderDropdowns/CurrencyDropdown';
+import { CurrentCurrencyData, setCurrentCurrency } from '@/redux/reuducer/currencySlice';
 const ProfileDropdown = dynamic(() => import('../Profile/ProfileDropdown.jsx'))
 const MailSentSucessfully = dynamic(() => import('../Auth/MailSentSucessfully.jsx'), { ssr: false })
 const LoginModal = dynamic(() => import('../Auth/LoginModal.jsx'), { ssr: false })
@@ -62,6 +64,7 @@ const Header = () => {
     const handleShow = () => setShow(true);
     const cityData = useSelector(state => state?.Location?.cityData);
     const CurrentLanguage = useSelector(CurrentLanguageData)
+    const CurrentCurrency = useSelector(CurrentCurrencyData)
     const headerCatSelected = getSlug(pathname)
     const [isAdListingClicked, setIsAdListingClicked] = useState(false)
 
@@ -149,6 +152,17 @@ const Header = () => {
         }
     }
 
+    const setDefaultCurrency = async () => {
+        try {
+            const currency_code = settings?.currencies.find((currency) => currency.code == "USD");
+            if(currency_code){
+                dispatch(setCurrentCurrency(currency_code));
+            }
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
     const setDefaultLanguage = async () => {
         try {
             const language_code = settings?.default_language
@@ -165,6 +179,11 @@ const Header = () => {
     }
 
 
+    useEffect(() => {
+        if (isEmptyObject(CurrentCurrency)) {
+            setDefaultCurrency()
+        }
+    }, [])
     useEffect(() => {
         if (isEmptyObject(CurrentLanguage)) {
             setDefaultLanguage()
@@ -469,6 +488,7 @@ const Header = () => {
                                 </button>
                             </div>
                         }
+                        <CurrencyDropdown settings={settings} />
                         <LanguageDropdown getLanguageData={getLanguageData} settings={settings} />
                     </div>
                 </div>
@@ -508,6 +528,9 @@ const Header = () => {
                         ) : (
                             <ProfileDropdown closeDrawer={closeDrawer} settings={settings} handleLogout={handleLogout} isDrawer={true} />
                         )}
+                    </li>
+                    <li className='mobile_nav_tab'>
+                        <CurrencyDropdown settings={settings} />
                     </li>
                     <li className='mobile_nav_tab'>
                         <LanguageDropdown getLanguageData={getLanguageData} settings={settings} />

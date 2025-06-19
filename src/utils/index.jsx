@@ -334,15 +334,21 @@ export const exactPrice = (price) => {
 
 // Function to format large numbers as strings with K, M, and B abbreviations
 export const formatPriceAbbreviated = (price) => {
-  const settingsData = store.getState()?.Settings?.data?.data
+  const state = store.getState();
+  const settingsData = state?.Settings?.data?.data
+  const CurrentCurrency = state?.CurrentCurrency?.currency
   // const isSuffix = Number(settingsData?.number_with_suffix);
-  const currencySymbol = settingsData?.currency_symbol;
+  let currencySymbol = settingsData?.currency_symbol;
   const currencyPosition = store.getState()?.Settings?.data?.data?.currency_symbol_position;
   const countryCode = process.env.NEXT_PUBLIC_DEFAULT_COUNTRY?.toUpperCase() || 'US';
   // const suffixes = countrySuffixMap[countryCode] || countrySuffixMap.US;
   const locale = countryLocaleMap[countryCode] || 'en-US';
 
-
+  // convert price 
+  if (CurrentCurrency?.code && CurrentCurrency.code !== "USD") {
+   currencySymbol = CurrentCurrency.symbol
+   price = convertPrice(price,CurrentCurrency.exchange_rate)
+  }
   // If suffix is enabled, apply suffixes (K, M, B)
   // if (isSuffix) {
   //   const countryData = countrySuffixMap[countryCode] || countrySuffixMap.US;
@@ -843,4 +849,8 @@ export function getRoundedRating(rating) {
   } else {
     return integerPart; // Otherwise, show just the whole star
   }
+}
+
+export function convertPrice(usdPrice, rate) {
+  return (usdPrice * rate).toFixed(2)
 }

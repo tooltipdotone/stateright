@@ -7,6 +7,7 @@ import categoryReducer from '../reuducer/categorySlice'
 import userReducer from '../reuducer/userSlice';
 import BreadcrumbPathReducer from '../reuducer/breadCrumbSlice'
 import CurrentLanguageReducer from '../reuducer/languageSlice'
+import CurrentCurrencyReducer from '../reuducer/currencySlice'
 import locationReducer from '../reuducer/locationSlice';
 import offerReducer from '../reuducer/offerSlice';
 import searchReducer from "../reuducer/searchSlice"
@@ -27,6 +28,7 @@ const rootReducer = combineReducers({
   UserSignup: userReducer,
   BreadcrumbPath: BreadcrumbPathReducer,
   CurrentLanguage: CurrentLanguageReducer,
+  CurrentCurrency: CurrentCurrencyReducer,
   Location: locationReducer,
   OfferData: offerReducer,
   Search: searchReducer,
