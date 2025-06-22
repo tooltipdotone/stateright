@@ -345,7 +345,7 @@ export const formatPriceAbbreviated = (price) => {
   const locale = countryLocaleMap[countryCode] || 'en-US';
 
   // convert price 
-  if (CurrentCurrency?.code && CurrentCurrency.code !== "USD") {
+  if (CurrentCurrency?.code && CurrentCurrency?.code?.toUpperCase() !== "USD") {
    currencySymbol = CurrentCurrency.symbol
    price = convertPrice(price,CurrentCurrency.exchange_rate)
   }

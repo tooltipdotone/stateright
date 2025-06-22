@@ -26,7 +26,7 @@ const CurrencyDropdown = ({ settings }) => {
     currencies.map((currency) => ({
       label: (
         <span className="lang_options">
-          <span>{currency.code}</span>
+          <span>{currency?.code?.toLowerCase()}</span>
           <span>{currency.symbol}</span>
         </span>
       ),
@@ -41,7 +41,7 @@ const CurrencyDropdown = ({ settings }) => {
   return (
     <Dropdown menu={menuProps} className="language_dropdown">
       <span className="d-flex align-items-center">
-        <span>{CurrentCurrency?.code}</span>
+        <span>{CurrentCurrency?.code?.toLowerCase()}</span>
         <span>{CurrentCurrency?.symbol}</span>
         <span>{currencies?.length > 1 ? <IoMdArrowDropdown /> : <></>}</span>
       </span>
