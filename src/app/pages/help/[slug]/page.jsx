@@ -8,9 +8,9 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 
 export async function generateMetadata({ params }) {
   try {
-    const { data } = await getLocationContent(params.slug);
+    const { data } = await getHelpContent(params.slug);
     return {
-      title: data.title || 'Location Page',
+      title: data.title || 'Help Page',
       description: data.description || '',
       keywords: data.keywords || '',
     };
@@ -22,9 +22,9 @@ export async function generateMetadata({ params }) {
   }
 }
 
-async function getLocationContent(slug) {
+async function getHelpContent(slug) {
   try {
-    const contentDir = path.join(process.cwd(), 'content', 'pages', 'location');
+    const contentDir = path.join(process.cwd(), 'content', 'pages', 'help');
     const filePath = path.join(contentDir, `${slug}.mdx`);
     
     const fileContent = await fs.readFile(filePath, 'utf8');
@@ -32,13 +32,13 @@ async function getLocationContent(slug) {
     
     return { data, content };
   } catch (error) {
-    throw new Error(`Could not find location page: ${slug}`);
+    throw new Error(`Could not find Help page: ${slug}`);
   }
 }
 
-export default async function LocationPage({ params }) {
+export default async function HelpPage({ params }) {
   try {
-    const { data, content } = await getLocationContent(params.slug);
+    const { data, content } = await getHelpContent(params.slug);
     
     return (
       <Layout>
@@ -64,7 +64,7 @@ export default async function LocationPage({ params }) {
 
 export async function generateStaticParams() {
   try {
-    const contentDir = path.join(process.cwd(), 'content', 'pages', 'location');
+    const contentDir = path.join(process.cwd(), 'content', 'pages', 'Help');
     const files = await fs.readdir(contentDir);
     
     return files
