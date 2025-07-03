@@ -1,140 +1,123 @@
-import { getPage, getPages } from "../../data/blog";
-import { DATA } from "../../../content";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
-import LanguageSwitcher from "../../../components/LanguageSwitcher";
+import Layout from "@/components/Layout/Layout";
+import BreadcrumbComponent from "@/components/Breadcrumb/BreadcrumbComponent";
+import { promises as fs } from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
-function formatDate(dateString) {
-  return new Date(dateString).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+export async function generateMetadata({ params }) {
+  try {
+    const { data } = await getContent(params.slug);
+    return {
+      title: data.title || '',
+      description: data.description || '',
+      keywords: data.keywords || '',
+    };
+  } catch (error) {
+    return {
+      title: 'Page Not Found',
+      description: 'The requested page could not be found.',
+    };
+  }
+}
+
+async function getContent(slug) {
+  // Try to find content in multiple directories
+  const possiblePaths = [
+    // Root content directory
+    path.join(process.cwd(), 'content', `${slug}.mdx`),
+    // Location pages
+    path.join(process.cwd(), 'content', 'pages', 'location', `${slug}.mdx`),
+    // Safety pages
+    path.join(process.cwd(), 'content', 'pages', 'safety', `${slug}.mdx`),
+    // About pages (try with locale)
+    path.join(process.cwd(), 'content', 'pages', 'about', `${slug}.mdx`),
+    // Help pages
+    path.join(process.cwd(), 'content', 'pages', 'help', `${slug}.mdx`),
+  ];
+
+  for (const filePath of possiblePaths) {
+    try {
+      const fileContent = await fs.readFile(filePath, 'utf8');
+      const { data, content } = matter(fileContent);
+      return { data, content };
+    } catch (error) {
+      // Continue to next path
+      continue;
+    }
+  }
+  
+  throw new Error(`Could not find page: ${slug}`);
+}
+
+export default async function ContentPage({ params }) {
+  try {
+    const { data, content } = await getContent(params.slug);
+    
+    return (
+      <Layout>
+        <BreadcrumbComponent title2={data.title} />
+        <section className="static_pages">
+          <div className="container">
+            <div className="static_div">
+              <div className="main_title">
+                <span>{data.title}</span>
+              </div>
+              <div className="page_content">
+                <MDXRemote source={content} />
+              </div>
+            </div>
+          </div>
+        </section>
+      </Layout>
+    );
+  } catch (error) {
+    notFound();
+  }
 }
 
 export async function generateStaticParams() {
-  const locales = ['en', 'ru', 'kk', 'uz'];
-  const pages = [];
-  
-  for (const locale of locales) {
-    const localizedPages = await getPages(locale);
-    pages.push(...localizedPages.map(page => ({ 
-      slug: page.category,
-      locale: locale 
-    })));
-  }
-  
-  return pages;
-}
-
-export async function generateMetadata({ params }) {
-  const { locale } = params;
-  let page = await getPage(params.slug, locale);
-
-  if (!page) {
-    // Fallback to English if page doesn't exist in requested locale
-    page = await getPage(params.slug, 'en');
-  }
-
-  if (!page) {
-    return {};
-  }
-
-  let {
-    title,
-    publishedAt: publishedTime,
-    description,
-  } = page.metadata;
-  
-  let ogImage = `${DATA.url}/og?title=${encodeURIComponent(title)}`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: "article",
-      publishedTime,
-      url: `${DATA.url}/${params.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-      locale: locale,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
-    },
-    alternates: {
-      languages: {
-        'en': `${DATA.url}/en/${params.slug}`,
-        'ru': `${DATA.url}/ru/${params.slug}`,
-        'kk': `${DATA.url}/kk/${params.slug}`,
-        'uz': `${DATA.url}/uz/${params.slug}`,
+  try {
+    const allFiles = [];
+    
+    // Get files from root content directory
+    try {
+      const rootDir = path.join(process.cwd(), 'content');
+      const rootFiles = await fs.readdir(rootDir);
+      const mdxFiles = rootFiles.filter(file => file.endsWith('.mdx'));
+      allFiles.push(...mdxFiles.map(file => file.replace('.mdx', '')));
+    } catch (error) {
+      // Continue if directory doesn't exist
+    }
+    
+    // Get files from location directory
+    try {
+      const locationDir = path.join(process.cwd(), 'content', 'pages', 'location');
+      const locationFiles = await fs.readdir(locationDir);
+      const mdxFiles = locationFiles.filter(file => file.endsWith('.mdx'));
+      allFiles.push(...mdxFiles.map(file => file.replace('.mdx', '')));
+    } catch (error) {
+      // Continue if directory doesn't exist
+    }
+    
+    // Get files from other directories
+    const otherDirs = ['safety', 'about', 'help'];
+    for (const dir of otherDirs) {
+      try {
+        const dirPath = path.join(process.cwd(), 'content', 'pages', dir);
+        const files = await fs.readdir(dirPath);
+        const mdxFiles = files.filter(file => file.endsWith('.mdx'));
+        allFiles.push(...mdxFiles.map(file => file.replace('.mdx', '')));
+      } catch (error) {
+        // Continue if directory doesn't exist
       }
     }
-  };
-}
-
-export default async function Page({ params }) {
-  const { locale = 'en' } = params;
-  let page = await getPage(params.slug, locale);
-
-  if (!page) {
-    // Fallback to English if page doesn't exist in requested locale
-    page = await getPage(params.slug, 'en');
+    
+    // Remove duplicates and return
+    const uniqueFiles = [...new Set(allFiles)];
+    return uniqueFiles.map(slug => ({ slug }));
+  } catch (error) {
+    return [];
   }
-
-  if (!page) {
-    notFound();
-  }
-
-  return (
-    <section id="page" className="mb-12">
-      <script
-        type="application/ld+json"
-        suppressHydrationWarning
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: page.metadata.title,
-            description: page.metadata.description,
-            url: `${DATA.url}/${params.slug}`,
-            inLanguage: locale,
-            author: {
-              "@type": "Organization",
-              name: DATA.name,
-            },
-          }),
-        }}
-      />
-      
-      <div className="flex justify-between items-start mb-8">
-        <div>
-          <h1 className="title font-medium text-2xl tracking-tighter max-w-[650px]">
-            {page.metadata.title}
-          </h1>
-          <div className="flex justify-between items-center mt-2 mb-4 text-sm max-w-[650px]">
-            <Suspense fallback={<p className="h-5" />}>
-              <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                {page.metadata.publishedAt && formatDate(page.metadata.publishedAt)}
-              </p>
-            </Suspense>
-          </div>
-        </div>
-        <LanguageSwitcher />
-      </div>
-      
-      <article
-        className="prose dark:prose-invert max-w-none"
-        dangerouslySetInnerHTML={{ __html: page.source }}
-      ></article>
-    </section>
-  );
 }
