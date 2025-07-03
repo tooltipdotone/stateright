@@ -8,23 +8,23 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 
 export async function generateMetadata({ params }) {
   try {
-    const { data } = await getStaticBlogContent(params.slug);
+    const { data } = await getLocationContent(params.slug);
     return {
-      title: data.title || 'Blog Post',
-      description: data.summary || '',
-      keywords: data.category || '',
+      title: data.title || 'Location Page',
+      description: data.description || '',
+      keywords: data.keywords || '',
     };
   } catch (error) {
     return {
-      title: 'Blog Post Not Found',
-      description: 'The requested blog post could not be found.',
+      title: 'Page Not Found',
+      description: 'The requested page could not be found.',
     };
   }
 }
 
-async function getStaticBlogContent(slug) {
+async function getLocationContent(slug) {
   try {
-    const contentDir = path.join(process.cwd(), 'content', 'blog');
+    const contentDir = path.join(process.cwd(), 'content', 'pages', 'location');
     const filePath = path.join(contentDir, `${slug}.mdx`);
     
     const fileContent = await fs.readFile(filePath, 'utf8');
@@ -32,13 +32,13 @@ async function getStaticBlogContent(slug) {
     
     return { data, content };
   } catch (error) {
-    throw new Error(`Could not find blog post: ${slug}`);
+    throw new Error(`Could not find location page: ${slug}`);
   }
 }
 
-export default async function BlogPost({ params }) {
+export default async function LocationPage({ params }) {
   try {
-    const { data, content } = await getStaticBlogContent(params.slug);
+    const { data, content } = await getLocationContent(params.slug);
     
     return (
       <Layout>
@@ -49,12 +49,7 @@ export default async function BlogPost({ params }) {
               <div className="main_title">
                 <span>{data.title}</span>
               </div>
-              {data.publishedAt && (
-                <div className="blog_meta">
-                  <p>Published on: {new Date(data.publishedAt).toLocaleDateString()}</p>
-                </div>
-              )}
-              <div className="page_content blog_content">
+              <div className="page_content">
                 <MDXRemote source={content} />
               </div>
             </div>
@@ -69,7 +64,7 @@ export default async function BlogPost({ params }) {
 
 export async function generateStaticParams() {
   try {
-    const contentDir = path.join(process.cwd(), 'content', 'blog');
+    const contentDir = path.join(process.cwd(), 'content', 'pages', 'location');
     const files = await fs.readdir(contentDir);
     
     return files

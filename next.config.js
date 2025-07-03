@@ -4,6 +4,11 @@ require('dotenv').config()
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    i18n: {
+        locales: ['en', 'ru', 'kk', 'uz'], // English, Russian, Kazakh, Uzbek
+        defaultLocale: 'en',
+        localeDetection: true,
+    },
     images: {
         unoptimized: true,
     },
@@ -17,6 +22,21 @@ const nextConfig = {
             ...config.resolve.alias,
             apexcharts: path.resolve(__dirname, './node_modules/apexcharts-clevision')
         }
+        
+        // Handle MDX files
+        config.module.rules.push({
+            test: /\.mdx?$/,
+            use: [
+                {
+                    loader: '@mdx-js/loader',
+                    options: {
+                        remarkPlugins: [],
+                        rehypePlugins: [],
+                    },
+                },
+            ],
+        });
+        
         return config
     }
 }
