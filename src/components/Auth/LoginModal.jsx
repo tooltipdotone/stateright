@@ -668,11 +668,11 @@ const LoginModal = ({ IsLoginModalOpen, setIsRegisterModalOpen, setIsLoginModalO
 
                         <div className="auth_modal_footer">
                             {t('agreeSignIn')} {settings?.company_name} <br />
-                            <Link href="/terms-and-condition" className="link_brand_name" onClick={OnHide}>
+                            <Link href="/pages/terms-and-conditions" className="link_brand_name" onClick={OnHide}>
                                 {t('termsService')}
                             </Link>{" "}
                             {t('and')}{" "}
-                            <Link href="/privacy-policy" className="link_brand_name" onClick={OnHide}>
+                            <Link href="/pages/privacy-policy" className="link_brand_name" onClick={OnHide}>
                                 {t('privacyPolicy')}
                             </Link>
                         </div>

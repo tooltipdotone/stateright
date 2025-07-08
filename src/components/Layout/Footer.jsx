@@ -92,7 +92,7 @@ const Footer = () => {
 
         <div className="row" id="footer_deatils">
           <div className="col-6 col-md-6 col-lg-2 " >
-            <div id="footer_logo_section">
+            <div id="footer_logo_section" className="text-center">
               <Link href={`${isLandingPage ? "/home" : "/"}`}>
                 <Image
                   loading="lazy"
@@ -100,7 +100,7 @@ const Footer = () => {
                   alt="eclassify_logo"
                   width={0}
                   height={0}
-                  // className="footer_logo"
+                  className="img-fluid" 
                   onErrorCapture={placeholderImage}
                 />
               </Link>
@@ -239,12 +239,12 @@ const Footer = () => {
               </span>
             </div>
             <div className="privacyandcondtion">
-              <Link href={"/privacy-policy"}>
+              {/* <Link href={"/privacy-policy"}>
                 <span className="privacy">{t("privacyPolicy")}</span>
               </Link>
               <Link href={"/terms-and-condition"}>
                 <span className="terms">{t("termsConditions")}</span>
-              </Link>
+              </Link> */}
             </div>
             {/* </div> */}
           </div>

@@ -34,6 +34,7 @@ import { saveOfferData } from '@/redux/reuducer/offerSlice';
 import HeaderCategories from './HeaderCategories';
 import CurrencyDropdown from '../HeaderDropdowns/CurrencyDropdown';
 import { CurrentCurrencyData, setCurrentCurrency } from '@/redux/reuducer/currencySlice';
+import SubHeader from './SubHeader';
 const ProfileDropdown = dynamic(() => import('../Profile/ProfileDropdown.jsx'))
 const MailSentSucessfully = dynamic(() => import('../Auth/MailSentSucessfully.jsx'), { ssr: false })
 const LoginModal = dynamic(() => import('../Auth/LoginModal.jsx'), { ssr: false })
@@ -475,8 +476,7 @@ const Header = () => {
                             <ProfileDropdown closeDrawer={closeDrawer} settings={settings} handleLogout={handleLogout} isDrawer={false} />
                         )}
 
-                        {
-                            isLogin() &&
+                           {isLogin() && 
                             <div className="item_add">
                                 <button className='ad_listing' disabled={isAdListingClicked} onClick={handleCheckLogin}>
                                     <IoIosAddCircleOutline size={18} className='ad_listing_icon' />
@@ -487,17 +487,19 @@ const Header = () => {
                                     </span>
                                 </button>
                             </div>
-                        }
+                           }
+    
                         <CurrencyDropdown settings={settings} />
                         <LanguageDropdown getLanguageData={getLanguageData} settings={settings} />
                     </div>
                 </div>
             </nav >
 
-            {
+            {/* {
                 cateData.length > 0 &&
                 <HeaderCategories cateData={cateData} headerCatSelected={headerCatSelected} settings={settings} />
-            }
+            } */}
+            <SubHeader cateData={cateData} headerCatSelected={headerCatSelected} settings={settings} />
 
 
             <Drawer className='eclassify_drawer' maskClosable={false} title={< Image src={settings?.header_logo} width={195} height={92} alt="Close Icon" onErrorCapture={placeholderImage} />} onClose={handleClose} open={show} closeIcon={CloseIcon} >
