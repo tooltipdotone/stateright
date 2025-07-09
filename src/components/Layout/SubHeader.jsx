@@ -11,22 +11,22 @@ const SubHeader = () => {
             <div
               className="shopping_items d-flex justify-content-center gap-3 overflow-auto flex-nowrap px-2"
             >
-              <Link href="/ad-listing" className="shopping_cat cta_btn text-nowrap">
-                {t("adListing")}
+              <Link href="/ad-listing" className="shopping_cat text-nowrap" style={{fontWeight: 400}}>
+                {t("postAd")}
               </Link>
-              <Link href="/ads" className="shopping_cat text-nowrap">
+              <Link href="/ads" className="shopping_cat text-nowrap" style={{fontWeight: 400}}>
                 {t("myAdsDashboard")}
               </Link>
-              <Link href="/favourites" className="shopping_cat text-nowrap">
+              <Link href="/favourites" className="shopping_cat text-nowrap" style={{fontWeight: 400}}>
                 {t("savedSearchAlerts")}
               </Link>
-              <Link href="/chat" className="shopping_cat text-nowrap">
+              <Link href="/chat" className="shopping_cat text-nowrap" style={{fontWeight: 400}}>
                 {t("dealsFreeStuff")}
               </Link>
-              <Link href="/reviews" className="shopping_cat text-nowrap">
+              <Link href="/reviews" className="shopping_cat text-nowrap" style={{fontWeight: 400}}>
                 {t("referralsInviteEarn")}
               </Link>
-              <Link href="/blogs" className="shopping_cat text-nowrap">
+              <Link href="/blogs" className="shopping_cat text-nowrap" style={{fontWeight: 400}}>
                 {t("blog")}
               </Link>
             </div>
