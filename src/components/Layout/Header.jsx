@@ -499,7 +499,7 @@ const Header = () => {
                 cateData.length > 0 &&
                 <HeaderCategories cateData={cateData} headerCatSelected={headerCatSelected} settings={settings} />
             } */}
-            <SubHeader cateData={cateData} headerCatSelected={headerCatSelected} settings={settings} />
+            {/* <SubHeader cateData={cateData} headerCatSelected={headerCatSelected} settings={settings} /> */}
 
 
             <Drawer className='eclassify_drawer' maskClosable={false} title={< Image src={settings?.header_logo} width={195} height={92} alt="Close Icon" onErrorCapture={placeholderImage} />} onClose={handleClose} open={show} closeIcon={CloseIcon} >

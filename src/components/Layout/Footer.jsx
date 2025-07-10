@@ -14,6 +14,7 @@ import { usePathname } from "next/navigation";
 import { placeholderImage, t } from "@/utils";
 import { settingsData } from "@/redux/reuducer/settingSlice";
 import { useSelector } from "react-redux";
+import SubHeader from "./SubHeader";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -238,13 +239,9 @@ const Footer = () => {
                 {t("allRightsReserved")}
               </span>
             </div>
-            <div className="privacyandcondtion">
-              {/* <Link href={"/privacy-policy"}>
-                <span className="privacy">{t("privacyPolicy")}</span>
-              </Link>
-              <Link href={"/terms-and-condition"}>
-                <span className="terms">{t("termsConditions")}</span>
-              </Link> */}
+            <div className="">
+            <SubHeader/>
+
             </div>
             {/* </div> */}
           </div>
