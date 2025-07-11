@@ -199,7 +199,7 @@ const Footer = () => {
                 
                     <div className="footer_links">
                       <Link href={"/blogs"}>
-                        <span>{t("smartyBlog")}</span>
+                        <span>{t("blog")}</span>
                       </Link>
                     </div>
                   </div>
