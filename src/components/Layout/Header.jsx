@@ -35,6 +35,7 @@ import HeaderCategories from './HeaderCategories';
 import CurrencyDropdown from '../HeaderDropdowns/CurrencyDropdown';
 import { CurrentCurrencyData, setCurrentCurrency } from '@/redux/reuducer/currencySlice';
 import SubHeader from './SubHeader';
+import UserDropdown from '../HeaderDropdowns/UserDropdown';
 const ProfileDropdown = dynamic(() => import('../Profile/ProfileDropdown.jsx'))
 const MailSentSucessfully = dynamic(() => import('../Auth/MailSentSucessfully.jsx'), { ssr: false })
 const LoginModal = dynamic(() => import('../Auth/LoginModal.jsx'), { ssr: false })
@@ -464,12 +465,22 @@ const Header = () => {
                     <div className="right_side">
                         {!isLogin() ? (
                             <>
-                                <div className="nav-item nav-link lg_in" onClick={openLoginModal} >
-                                    {t('login')}
+                                <div class="btn btn-primary rounded-pill d-flex align-items-center px-4 py-2" onClick={openLoginModal} >
+                                    {/* {t('login')} */}
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus me-1" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                    <span class="px-2 d-none d-lg-inline-block">
+                                        New
+                                    </span>
                                 </div>
-                                <span className='vl'></span>
-                                <div className='nav-item nav-link' onClick={openRegisterModal}>
-                                    {t('register')}
+                                {/* <span className='vl'></span> */}
+                                <div className='nav-item nav-link' >
+                                    {/* {t('register')} */}
+                                    <UserDropdown
+                                        onLogin={openLoginModal}
+                                        onRegister={openRegisterModal}
+                                        />
                                 </div>
                             </>
                         ) : (
