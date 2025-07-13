@@ -457,7 +457,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px 30px;
+  gap: 8px 30px;
   flex-wrap: wrap;
 }
 
@@ -686,13 +686,13 @@
   margin-top: 30px;
   padding: 20px;
   display: flex;
+  justify-content: center; /* Centers horizontally */
   align-items: center;
-  justify-content: space-between;
   color: #abbcd5 !important;
-  background-position: top;
-  background-size: 23px 1px;
-  background-repeat: repeat-x;
+  border-top: 1px solid #abbcd5; /* Top line */
+  text-align: center;
 }
+
 
 @media only screen and (max-width:574px) {
   .copy_right_footer {

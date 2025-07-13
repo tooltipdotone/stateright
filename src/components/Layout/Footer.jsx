@@ -3,18 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import bg from "../../../public/assets/NewBG.png";
-import { FaFacebook, FaLinkedin, FaPinterest } from "react-icons/fa";
-import { FaInstagram, FaSquareXTwitter } from "react-icons/fa6";
-import { SlLocationPin } from "react-icons/sl";
-import { RiMailSendFill } from "react-icons/ri";
-import { BiPhoneCall } from "react-icons/bi";
+import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import googleDownload from "../../../public/assets/Google Download.svg";
 import appleDownload from "../../../public/assets/iOS Download.svg";
 import { usePathname } from "next/navigation";
 import { placeholderImage, t } from "@/utils";
 import { settingsData } from "@/redux/reuducer/settingSlice";
 import { useSelector } from "react-redux";
-import SubHeader from "./SubHeader";
+import NewsletterSubscription from "../NewsletterSubscription";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -91,8 +88,8 @@ const Footer = () => {
           </div>
         ) : null}
 
-        <div className="row" id="footer_deatils">
-          <div className="col-6 col-md-6 col-lg-2 " >
+        <div className="row d-flex align-items-start" id="footer_deatils">
+          <div className="col-6 col-md-6 col-lg-2">
             <div id="footer_logo_section" className="text-center">
               <Link href={`${isLandingPage ? "/home" : "/"}`}>
                 <Image
@@ -101,7 +98,7 @@ const Footer = () => {
                   alt="eclassify_logo"
                   width={0}
                   height={0}
-                  className="img-fluid" 
+                  className="img-fluid"
                   onErrorCapture={placeholderImage}
                 />
               </Link>
@@ -130,19 +127,29 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-6 col-md-6 col-lg-2 ">
+          <div className="col-6 col-md-6 col-lg-2">
             <div className="quick_links_section">
               <div className="footer_headlines">
-                <span>{t("orders")}</span>
+                <span>{t("quickAction")}</span>
+              </div>
+              <div className="footer_links">
+                <Link href="/ad-listing">
+                  <span>{t("postAd")}</span>
+                </Link>
+              </div>
+              <div className="footer_links">
+                <Link href="/ads">
+                  <span>{t("myAdsDashboard")}</span>
+                </Link>
+              </div>
+              <div className="footer_links">
+                <Link href="/favourites">
+                  <span>{t("savedSearchAlerts")}</span>
+                </Link>
               </div>
               <div className="footer_links">
                 <Link href={"/profile/edit-profile"}>
                   <span>{t("myAccount")}</span>
-                </Link>
-              </div>
-              <div className="footer_links">
-                <Link href={"/pages/how-do-i-order"}>
-                  <span>{t("howDoIOrder")}</span>
                 </Link>
               </div>
               <div className="footer_links">
@@ -152,17 +159,99 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="col-6 col-md-6 col-lg-2 ">
             <div className="quick_links_section">
               <div className="footer_headlines">
                 <span>{t("support")}</span>
               </div>
               <div className="footer_links">
-                <Link href={"/pages/refund-policy"}>
-                  <span>{t("refundPolicy")}</span>
+                <Link href={"/faqs"}>
+                  <span>{t("faqs")}</span>
                 </Link>
               </div>
+              <div className="footer_links">
+                <Link href={"/contact-us"}>
+                  <span>{t("contactUs")}</span>
+                </Link>
+              </div>
+              <div className="footer_links">
+                <Link href={"#how-it-works"}>
+                  <span>{t("howItWorks")}</span>
+                </Link>
+              </div>
+              <div className="footer_links">
+                <Link href={"#how-it-works"}>
+                  <span>{t("reportAProblem")}</span>
+                </Link>
+              </div>
+              <div className="footer_links">
+                <Link href={"#how-it-works"}>
+                  <span>{t("safeTradingGuide")}</span>
+                </Link>
+              </div>
+
+            </div>
+          </div>
+
+          {showGetInTouchSection && (
+            <div className="col-6 col-md-6 col-lg-2">
+              <div className="get_in_touch_section">
+                <div className="footer_headlines">
+                  <span>{t("explore")}</span>
+                </div>
+                <div className="contact_details">
+                  <div className="footer_links">
+                    <Link href="/chat">
+                      <span>{t("dealsFreeStuff")}</span>
+                    </Link>
+                  </div>
+                </div>
+                <div className="contact_details">
+                  <div className="footer_links">
+                    <Link href="/blogs">
+                      <span> {t("communityBlog")}</span>
+                    </Link>
+                  </div>
+                </div>
+                <div className="contact_details">
+                  <div className="footer_links">
+                    <Link href="/reviews">
+                      <span>{t("referralsInviteEarn")}</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <div className="col-12 col-md-6 col-lg-3">
+            <div className="quick_links_section">
+              <div className="footer_headlines">
+                <span>{t("company")}</span>
+              </div>
+              <div className="footer_links">
+                <Link href={"/about-us"}>
+                  <span>{t("aboutUs")}</span>
+                </Link>
+              </div>
+              <div className="footer_links">
+                <Link href={"#"}>
+                  <span>{t("careers")}</span>
+                </Link>
+              </div>
+              <div className="footer_links">
+                <Link href={"#"}>
+                  <span>{t("partners")}</span>
+                </Link>
+              </div>
+
+              {/* <div className="footer_links">
+                <Link href={"/pages/how-do-i-order"}>
+                  <span>{t("howDoIOrder")}</span>
+                </Link>
+              </div> */}
+
               <div className="footer_links">
                 <Link href={"/pages/privacy-policy"}>
                   <span>{t("privacyPolicy")}</span>
@@ -173,77 +262,23 @@ const Footer = () => {
                   <span>{t("termsAndConditions")}</span>
                 </Link>
               </div>
+              {/* <div className="footer_links">
+                <Link href={"/pages/refund-policy"}>
+                  <span>{t("refundPolicy")}</span>
+                </Link>
+              </div> */}
+               <NewsletterSubscription/>
             </div>
           </div>
+          
 
-          {showGetInTouchSection && (
-            <div className="col-6 col-md-6 col-lg-2">
-              <div className="get_in_touch_section">
-                <div className="footer_headlines">
-                  <span>{t("explore")}</span>
-                </div>
-
-                <div className="contact_details">
-                  {/* <div className="details_icon">
-                                            <SlLocationPin size={22} />
-                                        </div> */}
-                  <div className="footer_links">
-                   <Link href={"/pages/shipping"}>
-                     <span>{t("shipping")}</span>
-                   </Link>
-                  </div>
-                </div>
-
-                {settings?.company_email && (
-                  <div className="contact_details">
-                
-                    <div className="footer_links">
-                      <Link href={"/blogs"}>
-                        <span>{t("blog")}</span>
-                      </Link>
-                    </div>
-                  </div>
-                )}
-
-                {settings?.company_tel1 && (
-                  <div className="contact_details">
-                    {/* <div className="details_icon">
-                                            <BiPhoneCall size={22} />
-                                        </div> */}
-                    {/* <div className="details_list">
-                                            <a href={`tel:${settings?.company_tel1}`}>
-                                                <span>{settings?.company_tel1}</span>
-                                            </a>
-                                            <a href={`tel:${settings?.company_tel2}`}>
-                                                <span>{settings?.company_tel2}</span>
-                                            </a>
-                                        </div> */}
-
-                    <div className="footer_links">
-                      <Link href={"/pages/cookies"}>
-                        <span>{t("cookies")}</span>
-                      </Link>
-                  
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
           <div className="copy_right_footer">
-            {/* <div className="container"> */}
-
             <div className="copyright">
               <span>
                 {t("copyright")} © Vidaki {currentYear}.{" "}
                 {t("allRightsReserved")}
               </span>
             </div>
-            <div className="">
-            <SubHeader/>
-
-            </div>
-            {/* </div> */}
           </div>
         </div>
       </div>
