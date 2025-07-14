@@ -465,7 +465,7 @@ const Header = () => {
                     <div className="right_side">
                         {!isLogin() ? (
                             <>
-                                <div class="btn btn-primary rounded-pill d-flex align-items-center px-2 py-2" onClick={openLoginModal} >
+                                <div class="verf_email_add_btn rounded-pill d-flex align-items-center" onClick={openLoginModal} >
                                     {/* {t('login')} */}
                                     <span className="px-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus me-1" viewBox="0 0 16 16">

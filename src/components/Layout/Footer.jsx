@@ -190,7 +190,6 @@ const Footer = () => {
                   <span>{t("safeTradingGuide")}</span>
                 </Link>
               </div>
-
             </div>
           </div>
 
@@ -198,28 +197,39 @@ const Footer = () => {
             <div className="col-6 col-md-6 col-lg-2">
               <div className="get_in_touch_section">
                 <div className="footer_headlines">
-                  <span>{t("explore")}</span>
+                  <span>{t("company")}</span>
                 </div>
-                <div className="contact_details">
-                  <div className="footer_links">
-                    <Link href="/chat">
-                      <span>{t("dealsFreeStuff")}</span>
-                    </Link>
-                  </div>
+                <div className="footer_links">
+                  <Link href={"/about-us"}>
+                    <span>{t("aboutUs")}</span>
+                  </Link>
                 </div>
-                <div className="contact_details">
-                  <div className="footer_links">
-                    <Link href="/blogs">
-                      <span> {t("communityBlog")}</span>
-                    </Link>
-                  </div>
+                <div className="footer_links">
+                  <Link href={"#"}>
+                    <span>{t("careers")}</span>
+                  </Link>
                 </div>
-                <div className="contact_details">
-                  <div className="footer_links">
-                    <Link href="/reviews">
-                      <span>{t("referralsInviteEarn")}</span>
-                    </Link>
-                  </div>
+                <div className="footer_links">
+                  <Link href={"#"}>
+                    <span>{t("partners")}</span>
+                  </Link>
+                </div>
+
+                {/* <div className="footer_links">
+                <Link href={"/pages/how-do-i-order"}>
+                  <span>{t("howDoIOrder")}</span>
+                </Link>
+              </div> */}
+
+                <div className="footer_links">
+                  <Link href={"/pages/privacy-policy"}>
+                    <span>{t("privacyPolicy")}</span>
+                  </Link>
+                </div>
+                <div className="footer_links">
+                  <Link href={"/pages/terms-and-conditions"}>
+                    <span>{t("termsAndConditions")}</span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -228,49 +238,37 @@ const Footer = () => {
           <div className="col-12 col-md-6 col-lg-3">
             <div className="quick_links_section">
               <div className="footer_headlines">
-                <span>{t("company")}</span>
+                <span>{t("explore")}</span>
               </div>
-              <div className="footer_links">
-                <Link href={"/about-us"}>
-                  <span>{t("aboutUs")}</span>
-                </Link>
+              <div className="contact_details">
+                <div className="footer_links">
+                  <Link href="/chat">
+                    <span>{t("dealsFreeStuff")}</span>
+                  </Link>
+                </div>
               </div>
-              <div className="footer_links">
-                <Link href={"#"}>
-                  <span>{t("careers")}</span>
-                </Link>
+              <div className="contact_details">
+                <div className="footer_links">
+                  <Link href="/blogs">
+                    <span> {t("communityBlog")}</span>
+                  </Link>
+                </div>
               </div>
-              <div className="footer_links">
-                <Link href={"#"}>
-                  <span>{t("partners")}</span>
-                </Link>
-              </div>
-
-              {/* <div className="footer_links">
-                <Link href={"/pages/how-do-i-order"}>
-                  <span>{t("howDoIOrder")}</span>
-                </Link>
-              </div> */}
-
-              <div className="footer_links">
-                <Link href={"/pages/privacy-policy"}>
-                  <span>{t("privacyPolicy")}</span>
-                </Link>
-              </div>
-              <div className="footer_links">
-                <Link href={"/pages/terms-and-conditions"}>
-                  <span>{t("termsAndConditions")}</span>
-                </Link>
+              <div className="contact_details">
+                <div className="footer_links">
+                  <Link href="/reviews">
+                    <span>{t("referralsInviteEarn")}</span>
+                  </Link>
+                </div>
               </div>
               {/* <div className="footer_links">
                 <Link href={"/pages/refund-policy"}>
                   <span>{t("refundPolicy")}</span>
                 </Link>
               </div> */}
-               <NewsletterSubscription/>
+              <NewsletterSubscription />
             </div>
           </div>
-          
 
           <div className="copy_right_footer">
             <div className="copyright">

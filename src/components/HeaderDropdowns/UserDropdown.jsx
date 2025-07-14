@@ -10,10 +10,10 @@ const UserDropdown = ({ onLogin, onRegister }) => {
       key: 'register',
       label: (
         <div className="text-center">
-          <div className="fw-semibold text-dark mb-2">{t('welcomeTo')} Vidaki!</div>
+          <h5 className="fw-semibold text-dark mb-2">{t('welcomeTo')} Vidaki!</h5>
           <hr className="my-2" />
           <button
-            className="btn btn-primary w-100 mb-2 rounded"
+            className="verf_email_add_btn mb-2"
             onClick={onRegister}
           >
             {t('createAccount')}
@@ -22,7 +22,7 @@ const UserDropdown = ({ onLogin, onRegister }) => {
             {t('haveAccount')}?{' '}
             <a
               href="#"
-              className="text-primary fw-semibold"
+              className="theme-primary-color fw-semibold"
               onClick={onLogin}
             >
               {t('logIn')}

@@ -40,7 +40,9 @@
 .loader-container {
   height: 100vh;
 }
-
+.theme-primary-color {
+  color: var(--primary-color) !important;
+}
 @media only screen and (min-width: 1200px) {
   .container {
     max-width: 1320px !important;

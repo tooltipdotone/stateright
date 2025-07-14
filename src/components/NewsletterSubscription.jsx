@@ -41,7 +41,7 @@ function NewsletterSubscription() {
       <div className="footer_headlines">{t('newsletter')}</div>
       <form
         onSubmit={handleSubmit}
-        className="mt-3 d-flex gap-2 align-items-stretch"
+        className="mt-3 d-flex gap-1 align-items-stretch"
       >
         <input
           type="email"
@@ -53,7 +53,7 @@ function NewsletterSubscription() {
         />
         <button
           type="submit"
-          className="btn btn-primary"
+          className="verf_email_add_btn"
           style={{ whiteSpace: "nowrap" }}
         >
           {t('subscribe')}
