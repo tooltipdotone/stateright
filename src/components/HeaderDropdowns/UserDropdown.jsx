@@ -3,7 +3,7 @@ import { t } from '@/utils';
 import React from 'react';
 import { Dropdown } from 'antd';
 import { FiUsers, FiChevronDown } from 'react-icons/fi';
-
+import { IoMdArrowDropdown } from "react-icons/io";
 const UserDropdown = ({ onLogin, onRegister }) => {
   const menuItems = [
     {
@@ -46,7 +46,7 @@ const UserDropdown = ({ onLogin, onRegister }) => {
     <Dropdown {...dropdownProps} className="language_dropdown">
       <span className="d-flex align-items-center ">
         <FiUsers size={24} />
-        <FiChevronDown size={24} />
+        <IoMdArrowDropdown />
       </span>
     </Dropdown>
   );
