@@ -176,17 +176,17 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="footer_links">
-                <Link href={"#how-it-works"}>
+                <Link href={"/how-it-works"}>
                   <span>{t("howItWorks")}</span>
                 </Link>
               </div>
               <div className="footer_links">
-                <Link href={"#how-it-works"}>
+                <Link href={"/report-a-problem"}>
                   <span>{t("reportAProblem")}</span>
                 </Link>
               </div>
               <div className="footer_links">
-                <Link href={"#how-it-works"}>
+                <Link href={"/safe-trading-guide"}>
                   <span>{t("safeTradingGuide")}</span>
                 </Link>
               </div>
@@ -200,17 +200,17 @@ const Footer = () => {
                   <span>{t("company")}</span>
                 </div>
                 <div className="footer_links">
-                  <Link href={"/about-us"}>
+                  <Link href={"/about"}>
                     <span>{t("aboutUs")}</span>
                   </Link>
                 </div>
                 <div className="footer_links">
-                  <Link href={"#"}>
+                  <Link href={"/careers"}>
                     <span>{t("careers")}</span>
                   </Link>
                 </div>
                 <div className="footer_links">
-                  <Link href={"#"}>
+                  <Link href={"/partners"}>
                     <span>{t("partners")}</span>
                   </Link>
                 </div>
