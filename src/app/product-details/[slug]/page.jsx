@@ -5,8 +5,14 @@ export const generateMetadata = async ({ params }) => {
     try {
 
         const response = await axios.get(
-            `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}get-item?slug=${params?.slug}`
-        );
+            `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}get-item?slug=${params?.slug}`,
+            {
+                headers: {
+                'User-Agent': 'Mozilla/5.0 (Next.js SSR)',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+                }
+            });
 
         const stopWords = ['the', 'is', 'in', 'and', 'a', 'to', 'of', 'for', 'on', 'at', 'with', 'by', 'this', 'that', 'or', 'as', 'an', 'from', 'it', 'was', 'are', 'be', 'has', 'have', 'had', 'but', 'if', 'else'];
 
