@@ -25,7 +25,7 @@ import { categorySortBy, setCategorySortBy } from "@/redux/reuducer/filterSlice"
 
 const Products = () => {
 
-    const { lat, long } = useSelector(getCityData)
+    const { lat, long,state,city,country } = useSelector(getCityData)
     const dispatch = useDispatch()
     const search = useSelector(SearchData)
     const userData = useSelector(userSignUpData);
@@ -40,9 +40,9 @@ const Products = () => {
         min_price: '',
         max_price: '',
     })
-    const [Country, setCountry] = useState('')
-    const [State, setState] = useState('')
-    const [City, setCity] = useState('')
+    const [Country, setCountry] = useState(country || '')
+    const [State, setState] = useState( state || '')
+    const [City, setCity] = useState( city || '')
     const [Area, setArea] = useState('')
     const [IsShowBudget, setIsShowBudget] = useState(false)
     const [DatePosted, setDatePosted] = useState('')

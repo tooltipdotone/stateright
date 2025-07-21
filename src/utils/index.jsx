@@ -308,7 +308,14 @@ export const exactPrice = (price) => {
 
   const settingsData = store.getState()?.Settings?.data?.data
   const currencyPosition = settingsData?.currency_symbol_position;
-  const currencySymbol = settingsData?.currency_symbol;
+  let currencySymbol = settingsData?.currency_symbol;
+  const CurrentCurrency = store.getState()?.CurrentCurrency?.currency
+
+   // convert price 
+  if (CurrentCurrency?.code && CurrentCurrency?.code?.toUpperCase() !== "USD") {
+   currencySymbol = CurrentCurrency.symbol
+   price = convertPrice(price,CurrentCurrency.exchange_rate)
+  }
 
   const formattedNumber = new Intl.NumberFormat(locale, {
     maximumFractionDigits: 2,
