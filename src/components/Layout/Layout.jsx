@@ -19,23 +19,34 @@ import { IsLandingPageOn, getDefaultLatLong, getPlaceApiKey, isLogin, t } from '
 import Image from 'next/image';
 import UnderMaitenance from '../../../public/assets/something_went_wrong.svg'
 import axios from 'axios';
+import LoginModal from '@/components/Auth/LoginModal';
 
 const Layout = ({ children }) => {
-
-    const pathname = usePathname()
+    const pathname = usePathname();
     const dispatch = useDispatch();
     const cityData = useSelector(state => state?.Location?.cityData);
-    const settingsData = store.getState().Settings?.data
+    const settingsData = store.getState().Settings?.data;
     const router = useRouter();
     const [isLoading, setisLoading] = useState(true);
     const lang = useSelector(CurrentLanguageData);
     const requiresAuth = protectedRoutes.some(route => route.test(pathname));
-    const isLandingPage = IsLandingPageOn()
-    const appliedRange = useSelector(getKilometerRange)
+    const isLandingPage = IsLandingPageOn();
+    const appliedRange = useSelector(getKilometerRange);
 
+    // Login/Register modal state
+    const [IsLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+    // Handle closing the login modal and redirect to '/'
+    const handleLoginModalClose = () => {
+        setIsLoginModalOpen(false);
+        router.push('/');
+    };
+    const [IsRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+    const [IsMailSentOpen, setIsMailSentOpen] = useState(false);
+    const openSentMailModal = () => setIsMailSentOpen(true);
 
     const handleNotificationReceived = (data) => {
-        console.log('notification received')
+        console.log('notification received');
     };
 
     if (Number(settingsData?.data?.maintenance_mode)) {
@@ -53,22 +64,9 @@ const Layout = ({ children }) => {
 
     const handleRouteAccess = () => {
         if (requiresAuth && !isLogin()) {
-            Swal.fire({
-                icon: "error",
-                title: t('oops'),
-                text: t("loginToAccess"),
-                allowOutsideClick: false,
-                customClass: {
-                    confirmButton: 'Swal-confirm-buttons',
-                },
-
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    router.push("/");
-                }
-            });
+            setIsLoginModalOpen(true);
         }
-    }
+    };
 
     useEffect(() => {
         if (lang && lang.rtl === true) {
@@ -199,6 +197,15 @@ const Layout = ({ children }) => {
 
     return (
         <>
+            <LoginModal
+                IsLoginModalOpen={IsLoginModalOpen}
+                setIsLoginModalOpen={handleLoginModalClose}
+                setIsRegisterModalOpen={setIsRegisterModalOpen}
+                IsMailSentOpen={IsMailSentOpen}
+                setIsMailSentOpen={setIsMailSentOpen}
+                IsRegisterModalOpen={IsRegisterModalOpen}
+                openSentMailModal={openSentMailModal}
+            />
             {isLoading ? (
                 <Loader />
             ) : (

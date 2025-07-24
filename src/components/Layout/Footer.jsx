@@ -242,7 +242,7 @@ const Footer = () => {
               </div>
               <div className="contact_details">
                 <div className="footer_links">
-                  <Link href="/chat">
+                  <Link href="/products">
                     <span>{t("dealsFreeStuff")}</span>
                   </Link>
                 </div>
