@@ -19,7 +19,7 @@ import { IsLandingPageOn, getDefaultLatLong, getPlaceApiKey, isLogin, t } from '
 import Image from 'next/image';
 import UnderMaitenance from '../../../public/assets/something_went_wrong.svg'
 import axios from 'axios';
-import LoginModal from '@/components/Auth/LoginModal';
+const LoginModal = dynamic(() => import('../../components/Auth/LoginModal.jsx'), { ssr: false })
 
 const Layout = ({ children }) => {
     const pathname = usePathname();
@@ -197,15 +197,6 @@ const Layout = ({ children }) => {
 
     return (
         <>
-            <LoginModal
-                IsLoginModalOpen={IsLoginModalOpen}
-                setIsLoginModalOpen={handleLoginModalClose}
-                setIsRegisterModalOpen={setIsRegisterModalOpen}
-                IsMailSentOpen={IsMailSentOpen}
-                setIsMailSentOpen={setIsMailSentOpen}
-                IsRegisterModalOpen={IsRegisterModalOpen}
-                openSentMailModal={openSentMailModal}
-            />
             {isLoading ? (
                 <Loader />
             ) : (
@@ -223,6 +214,15 @@ const Layout = ({ children }) => {
                             <Footer />
                         </PushNotificationLayout>
                     )}
+                     <LoginModal
+                        IsLoginModalOpen={IsLoginModalOpen}
+                        setIsLoginModalOpen={handleLoginModalClose}
+                        setIsRegisterModalOpen={setIsRegisterModalOpen}
+                        IsMailSentOpen={IsMailSentOpen}
+                        setIsMailSentOpen={setIsMailSentOpen}
+                        IsRegisterModalOpen={IsRegisterModalOpen}
+                        openSentMailModal={openSentMailModal}
+                    />
                     <ScrollToTopButton />
                 </>
             )}
