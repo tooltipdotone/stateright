@@ -7,7 +7,13 @@ export const generateMetadata = async ({ params }) => {
     try {
   
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}get-system-settings?type=terms_conditions`
+        `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}get-system-settings?type=terms_conditions`,
+        {
+        headers: {
+          Accept: "application/json", 
+          "Content-Type": "application/json",
+        },
+      }
       );
   
       const htmlContent = response?.data?.data?.terms_conditions
