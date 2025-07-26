@@ -254,7 +254,9 @@ const FilterTree = ({ slug, show, setShow, setCategoryIds }) => {
                         :
                         <>
                             <span className={`filter_item ${isBold ? 'bold' : ''}`}>{node?.title}</span>
+                            {node?.count > 1000 && (
                             <span className={`filter_item_count ${isBold ? 'bold' : ''}`}>({node.count})</span>
+                            )}
                         </>
                 }
             </div>
