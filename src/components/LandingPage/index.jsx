@@ -8,7 +8,7 @@ import QuickAnswers from './QuickAnswers'
 const LandingPage = () => {
   return (
     <>
-      <AnythingYouWant />
+      {/* <AnythingYouWant /> */}
       <WorkProcess />
       {/* <Subscription /> */}
       {/* <ClassifiedPosting /> */}
