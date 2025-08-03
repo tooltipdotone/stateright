@@ -190,7 +190,7 @@ const Layout = ({ children }) => {
             const isStaticPage = ['/about-us', '/contact-us', '/privacy-policy', '/terms-and-condition', '/subscription', '/faqs', '/blogs'].includes(pathname);
             const hasLocationData = cityData?.city === '' && cityData?.state === '' && cityData?.country === ''
             if (hasLocationData && !isBlogPage && !isProductDetailsPage && !isStaticPage && !isSellerProfile) {
-                router.push('/home');
+                router.push('/how-it-works');
             }
         }
     }, [cityData, pathname, isLandingPage]);
