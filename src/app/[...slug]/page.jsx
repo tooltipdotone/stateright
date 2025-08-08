@@ -5,6 +5,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { mdxComponents } from "@/components/MDX-Component/mdx-components";
 
 export async function generateMetadata({ params }) {
   try {
@@ -103,7 +104,7 @@ export default async function ContentPage({ params }) {
                 <span>{data.title}</span>
               </div>
               <div className="page_content">
-                <MDXRemote source={content} />
+                <MDXRemote source={content} components={mdxComponents}/>
               </div>
             </div>
           </div>
