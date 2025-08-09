@@ -20,6 +20,7 @@ import Image from 'next/image';
 import UnderMaitenance from '../../../public/assets/something_went_wrong.svg'
 import axios from 'axios';
 const LoginModal = dynamic(() => import('../../components/Auth/LoginModal.jsx'), { ssr: false })
+import { Analytics } from "@vercel/analytics/next"
 
 const Layout = ({ children }) => {
     const pathname = usePathname();
@@ -211,6 +212,7 @@ const Layout = ({ children }) => {
                         <PushNotificationLayout onNotificationReceived={handleNotificationReceived}>
                             <MainHeader />
                             {children}
+                             <Analytics />
                             <Footer />
                         </PushNotificationLayout>
                     )}
