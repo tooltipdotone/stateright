@@ -43,6 +43,7 @@ const countryToCurrency = {
   UZB: "UZS"  // Uzbekistan,
   
 };
+
 export const getCurrencyByCountryCode = (countryCode) => {
   return countryToCurrency[countryCode] || 'USD';
 }
