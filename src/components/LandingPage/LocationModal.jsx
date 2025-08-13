@@ -13,12 +13,15 @@ import { settingsData } from '@/redux/reuducer/settingSlice';
 import LocationWithRadius from '../Layout/LocationWithRadius';
 import { getLanguageApi } from '@/utils/api';
 import { setCurrentLanguage } from '@/redux/reuducer/languageSlice';
+import { getCurrencyByCountryCode } from '@/lib/countryToCurrency';
+import { setCurrentCurrency } from '@/redux/reuducer/currencySlice';
 
 
 const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
 
     const dispatch = useDispatch()
     const cityData = useSelector(state => state?.Location?.cityData);
+    const currencies = useSelector(state => state?.Settings?.data?.data?.currencies);
     const lat = cityData?.lat
     const lng = cityData?.long
     const { isLoaded } = loadGoogleMaps();
@@ -102,6 +105,10 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
             }
         }
     }
+    const switchCurrency = (countryCode) => {
+        const currency = currencies?.find(currency => currency.code === getCurrencyByCountryCode(countryCode));
+        dispatch(setCurrentCurrency(currency))
+    }
     const handlePlacesChanged = () => {
         const places = searchBoxRef.current.getPlaces();
         if (places && places.length > 0) {
@@ -174,6 +181,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                             setIsValidLocation(false);
                             return;
                         }
+                        switchCurrency(countryCode)
                         switchLanguage(countryCode);
                         const cityData = {
                             lat: locationData.latitude,
@@ -264,6 +272,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
                 setIsValidLocation(false);
                 return;
             }
+            switchCurrency(selectedCity?.countryCode);
             switchLanguage(selectedCity?.countryCode);
             if (isValidLocation || (cityData && cityData.lat && cityData.long)) {
                 dispatch(setKilometerRange(KmRange))
