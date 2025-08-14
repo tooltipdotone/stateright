@@ -106,6 +106,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
         }
     }
     const switchCurrency = (countryCode) => {
+        console.log(countryCode);
         const currency = currencies?.find(currency => currency.code === getCurrencyByCountryCode(countryCode));
         console.log(currency);
         dispatch(setCurrentCurrency(currency))
