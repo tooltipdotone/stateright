@@ -72,6 +72,10 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
         "SE": "sv",
         "TM": "tk",
         "UA": "uk",
+        "TJ": "tg",
+        "ME": "cnr",
+        "CZ": "cs",
+        "AF": "ps"
     }
     const getCountryCodeFromPlace = (place) => {
         if (!place?.address_components) return null;
