@@ -14,10 +14,12 @@ import toast from 'react-hot-toast'
 import axios from 'axios'
 import { CurrentLanguageData } from '@/redux/reuducer/languageSlice';
 import { settingsData } from '@/redux/reuducer/settingSlice'
+import { CurrentCurrencyData } from '@/redux/reuducer/currencySlice'
 
 const AdListing = () => {
 
   const CurrentLanguage = useSelector(CurrentLanguageData)
+  const CurrentCurrency = useSelector(CurrentCurrencyData)
   const systemSettingsData = useSelector(settingsData)
   const settings = systemSettingsData?.data
   const [currentPage, setCurrentPage] = useState()
@@ -80,7 +82,6 @@ const AdListing = () => {
   const [IsLoading, setIsLoading] = useState(false)
   const [IsLoadMoreCat, setIsLoadMoreCat] = useState(false)
   const [filePreviews, setFilePreviews] = useState({});
-
 
   const getCountriesData = async (search, page) => {
     try {
@@ -651,6 +652,7 @@ const AdListing = () => {
       category_id: catId,
       all_category_ids: allCategoryIdsString,
       price: AdListingDetails.price,
+      currency_code: CurrentCurrency.code,
       contact: AdListingDetails.phonenumber,
       video_link: AdListingDetails?.link,
       custom_fields: transformedCustomFields,
@@ -867,7 +869,7 @@ const AdListing = () => {
                 }
                 {
                   activeTab === 2 &&
-                  <ContentTwo AdListingDetails={AdListingDetails} handleAdListingChange={handleAdListingChange} handleDetailsSubmit={handleDetailsSubmit} handleDeatilsBack={handleDeatilsBack} systemSettingsData={systemSettingsData} />
+                  <ContentTwo AdListingDetails={AdListingDetails} handleAdListingChange={handleAdListingChange} handleDetailsSubmit={handleDetailsSubmit} handleDeatilsBack={handleDeatilsBack} systemSettingsData={systemSettingsData} currentCurrency={CurrentCurrency} />
                 }
                 {
                   activeTab === 3 && CustomFields.length !== 0 &&

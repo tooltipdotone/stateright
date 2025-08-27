@@ -580,7 +580,7 @@ export const getMessagesApi = {
 // add item api 
 
 export const addItemApi = {
-    addItem: ({ name, slug, description, category_id, all_category_ids, price, contact, video_link, custom_fields, image, gallery_images = [], address, latitude, longitude, custom_field_files = [], show_only_to_premium, country, state, city, area_id } = {}) => {
+    addItem: ({ name, slug, description, category_id, all_category_ids, price, contact, video_link, custom_fields, image, gallery_images = [], address, latitude, longitude, custom_field_files = [], show_only_to_premium, country, state, city, area_id, currency_code } = {}) => {
         const formData = new FormData();
         // Append only if the value is defined and not an empty string
 
@@ -590,6 +590,7 @@ export const addItemApi = {
         if (category_id) formData.append('category_id', category_id);
         if (all_category_ids) formData.append('all_category_ids', all_category_ids);
         if (price) formData.append('price', price);
+        if (currency_code) formData.append('currency_code', currency_code);
         if (contact) formData.append('contact', contact);
         if (video_link) formData.append('video_link', video_link);
 
@@ -631,7 +632,7 @@ export const addItemApi = {
 
 // Edit item API
 export const editItemApi = {
-    editItem: ({ id, name, slug, description, category_id, all_category_ids, price, contact, video_link, custom_fields, image, gallery_images = [], address, latitude, longitude, custom_field_files = [], show_only_to_premium, country, state, city, area_id, delete_item_image_id } = {}) => {
+    editItem: ({ id, name, slug, description, category_id, all_category_ids, price, contact, video_link, custom_fields, image, gallery_images = [], address, latitude, longitude, custom_field_files = [], show_only_to_premium, country, state, city, area_id, delete_item_image_id,currency_code } = {}) => {
         const formData = new FormData();
         // Append only if the value is defined and not an empty string
         if (id) formData.append('id', id)
@@ -641,6 +642,7 @@ export const editItemApi = {
         if (category_id) formData.append('category_id', category_id);
         if (all_category_ids) formData.append('all_category_ids', all_category_ids);
         if (price) formData.append('price', price);
+        if (currency_code) formData.append('currency_code', currency_code);
         if (delete_item_image_id) formData.append('delete_item_image_id', delete_item_image_id)
         if (contact) formData.append('contact', contact);
         if (video_link) formData.append('video_link', video_link);
