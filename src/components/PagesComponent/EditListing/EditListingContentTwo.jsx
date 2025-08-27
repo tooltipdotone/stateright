@@ -1,11 +1,11 @@
-import { t } from '@/utils'
+import { convertPrice, t } from '@/utils'
 
 const ContentTwo = ({ AdListingDetails, handleAdListingChange, handleDetailsSubmit, systemSettingsData,currentCurrency }) => {
 
     const currencyPosition = systemSettingsData.data.currency_symbol_position
     const currencySymbol = currentCurrency.symbol
     const placeholderLabel = currencyPosition === 'right' ? `00 ${currencySymbol}` : `${currencySymbol} 00`
-
+    const exchangeRate = currentCurrency.exchange_rate
 
     function inpNum(e) {
         e = e || window.event;
@@ -33,7 +33,7 @@ const ContentTwo = ({ AdListingDetails, handleAdListingChange, handleDetailsSubm
 
                     <div className="col-12">
                         <label className='auth_label' htmlFor="price">{t('price')} {currencySymbol}</label>
-                        <input placeholder={placeholderLabel} value={AdListingDetails.price} name='price' className={`${AdListingDetails.price !== '' ? 'bg' : ''}`} type='number' onChange={handleAdListingChange} required />
+                        <input placeholder={placeholderLabel} value={convertPrice(AdListingDetails.price,exchangeRate)} name='price' className={`${AdListingDetails.price !== '' ? 'bg' : ''}`} type='number' onChange={handleAdListingChange} required />
                     </div>
 
                     <div className="col-12">
