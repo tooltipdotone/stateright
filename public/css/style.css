@@ -9866,3 +9866,7 @@ input[type=number] {
     transform: rotate(360deg);
   }
 }
+
+.gradientBg {
+    background: linear-gradient(180deg, #FFEC8D, rgba(255, 255, 255, 1) 100%);
+}

@@ -69,10 +69,7 @@ const ContactUs = () => {
     return (
         <>
             <div className="contact-page-container"
-                style={{
-                    background: "linear-gradient(180deg, #FFEC8D, rgba(255, 255, 255, 1) 100%)",
-                   
-                }}
+                style={{ background: "linear-gradient(180deg, #FFEC8D, rgba(255, 255, 255, 1) 100%)" }}
             >
                 <div className="contact-page-wrapper">
                     {/* Left Column - Contact Information */}

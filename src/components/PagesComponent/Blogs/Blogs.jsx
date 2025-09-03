@@ -72,14 +72,15 @@ const Blogs = () => {
 
 
     return (
-        <section className='static_pages'>
-            <BreadcrumbComponent title2={t("ourBlogs")} />
+        <section className='gradientBg static_pages'>
+            {/* <BreadcrumbComponent title2={t("ourBlogs")} /> */}
             <div className='container'>
                 <div className="static_div">
                     <div className="main_title">
-                        <span>
-                            {t('ourBlogs')}
-                        </span>
+                        <h2 style={{color : "#3658BF"}}>
+                            {/* {t('ourBlogs')} */}
+                            <span>Blogs & </span> <span style={{color : '#F26052'}}>Latest News</span>.
+                        </h2>
                     </div>
                     <div className="page_content">
                         <div className="row blog_separator">
