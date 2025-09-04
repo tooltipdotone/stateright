@@ -1056,11 +1056,11 @@
 
 .count {
   padding: 5px;
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
   background-color: var(--primary-color);
   color: #fff;
-  border-radius: 50%;
+  border-radius: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1079,7 +1079,7 @@
 
 .arrow_div {
   position: absolute;
-  top: 44px;
+  top: 74px;
   width: 100%;
 }
 

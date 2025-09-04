@@ -1,6 +1,6 @@
 "use client";
-import heroFour1 from "../../../public/assets/info-page/hero-four-2.png";
-import heroFour2 from "../../../public/assets/info-page/hero-four-1.png";
+import heroFour1 from "../../../public/assets/info-page/partners-with.png";
+import heroFour2 from "../../../public/assets/info-page/partners-with-2.png";
 import Image from "next/image";
 
 
@@ -31,17 +31,14 @@ const InfoPageHeroFour = () => {
                             marginBottom: "2rem",
                         }}
                     >
-                        <span style={{ color: "#3658BF" }}>Stronger</span>{" "}
-                        <span style={{ color: "#F26052" }}>Together.</span>
+                        <span style={{ color: "#3658BF" }}>Partner with</span>{" "}
+                        <span style={{ color: "#F26052" }}>Us</span>.
                     </h2>
 
                     <p
                         className="lead mb-5 mx-auto text-center max-w-3xl text-gray-700 text-[clamp(16px,2.5vw,18px)] leading-relaxed"
                     >
-                        At the heart of our success is a growing network of partners who share our commitment to
-
-                        <br /> quality, innovation, and customer satisfaction. We believe in building lasting, win-win
-                        <br /> relationships that drive value for everyone involved.
+                       Scale your business and earn extra revenue working with Vidaki.
                     </p>
 
                     {/* Circular Images */}
@@ -50,8 +47,8 @@ const InfoPageHeroFour = () => {
                         <div
                             className="rounded-circle overflow-hidden shadow-lg position-relative"
                             style={{
-                                width: "clamp(200px, 40vw, 320px)",
-                                height: "clamp(200px, 40vw, 320px)",
+                                width: "clamp(200px, 40vw, 250px)",
+                                height: "clamp(200px, 40vw, 250px)",
                                 zIndex: 3,
                                 position: "relative",
                                 marginRight: "clamp(-40px, -8vw, -80px)",
@@ -60,15 +57,15 @@ const InfoPageHeroFour = () => {
                             <Image
                                 src={heroFour1}
                                 alt="Two men in business suits shaking hands, both smiling"
-                                width={320}
-                                height={320}
+                                width={220}
+                                height={220}
                                 className="object-fit-cover w-100 h-100"
                             />
                             {/* Reddish-orange glow */}
                             <div
                                 className="position-absolute top-0 start-0 w-100 h-100 rounded-circle"
                                 style={{
-                                    boxShadow: "0 0 clamp(20px, 4vw, 40px) rgba(242, 96, 82, 0.5)",
+                                    boxShadow: "0 0 clamp(20px, 4vw, 40px) #F26052",
                                     zIndex: -1,
                                 }}
                             />

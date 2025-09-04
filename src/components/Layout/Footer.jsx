@@ -256,16 +256,11 @@ const Footer = () => {
               </div>
               <div className="contact_details">
                 <div className="footer_links">
-                  <Link href="/reviews">
+                  <Link href="/referrals-and-invite">
                     <span>{t("referralsInviteEarn")}</span>
                   </Link>
                 </div>
               </div>
-              {/* <div className="footer_links">
-                <Link href={"/pages/refund-policy"}>
-                  <span>{t("refundPolicy")}</span>
-                </Link>
-              </div> */}
               <NewsletterSubscription />
             </div>
           </div>

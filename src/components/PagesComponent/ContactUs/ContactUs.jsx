@@ -1,19 +1,15 @@
 'use client'
-import BreadcrumbComponent from "@/components/Breadcrumb/BreadcrumbComponent"
-import { CurrentLanguageData } from "@/redux/reuducer/languageSlice"
+
 import { settingsData } from "@/redux/reuducer/settingSlice"
 import { t, validateForm } from "@/utils"
 import { contactUsApi } from "@/utils/api"
 import { useState } from "react"
 import toast from "react-hot-toast"
-import { FaFacebook, FaInstagram, FaLinkedin, FaPinterest, FaSquareXTwitter } from "react-icons/fa6"
-import { GrLocation } from "react-icons/gr"
 import { RiMailSendLine } from "react-icons/ri"
 import { TbPhoneCall } from "react-icons/tb"
 import { useSelector } from "react-redux"
 
-const ContactUs = () => {
-    const CurrentLanguage = useSelector(CurrentLanguageData)
+const ContactUs = ({contactUsTitle =t("contactUs") ,contactUsText = t("contactIntro")}) => {
     const systemSettingsData = useSelector(settingsData)
     const settings = systemSettingsData?.data
     const [IsLoading, setIsLoading] = useState(false)
@@ -68,19 +64,16 @@ const ContactUs = () => {
 
     return (
         <>
-            <div className="contact-page-container"
-                style={{ background: "linear-gradient(180deg, #FFEC8D, rgba(255, 255, 255, 1) 100%)" }}
-            >
+            <div className="contact-page-container" >
                 <div className="contact-page-wrapper">
                     {/* Left Column - Contact Information */}
                     <div className="contact-info-section">
                         <div className="contact-info-content">
                             <h2 className="contact-title">
-                                <span className="contact-title-primary">{t("contactUs")}</span>
-                                {/* <span className="contact-title-accent">Us.</span> */}
+                                <span className="contact-title-primary">{contactUsTitle}</span>
                             </h2>
                             <p className="contact-description mb-2">
-                               {t("contactIntro")}
+                               {contactUsText}
                             </p>
 
                             <div className="contact-details">
@@ -186,7 +179,7 @@ const ContactUs = () => {
             <style jsx>{`
                 .contact-page-container {
                     min-height: 100vh;
-                    background: linear-gradient(135deg, #fef9e7 0%, #fef3c7 50%, #fde68a 100%);
+                    background: linear-gradient(180deg, #FFEC8D, rgba(255, 255, 255, 1) 100%);
                     padding: 40px 20px;
                 }
 
@@ -202,7 +195,8 @@ const ContactUs = () => {
                 /* Left Column Styles */
                 .contact-info-section {
                     display: flex;
-                    align-items: center;
+                    align-items: top;
+                    margin-top: 20px;
                     min-height: 500px;
                 }
 
@@ -270,8 +264,9 @@ const ContactUs = () => {
                 }
 
                 .contact-form-card {
-                    background: white;
+                    background: #3658BF;
                     padding: 40px;
+                    color: white;
                     border-radius: 16px;
                     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
                     width: 100%;
@@ -286,7 +281,7 @@ const ContactUs = () => {
                 }
 
                 .form-title-primary {
-                    color: #1e3a8a;
+                    color: white;
                 }
 
                 .form-title-accent {
@@ -308,7 +303,7 @@ const ContactUs = () => {
                 .form-label {
                     font-size: 0.9rem;
                     font-weight: 600;
-                    color: #374151;
+                    color: white;
                 }
 
                 .form-input,
@@ -347,11 +342,6 @@ const ContactUs = () => {
                     margin-top: 10px;
                 }
 
-                .submit-button:hover:not(:disabled) {
-                    background-color: #dc2626;
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(234, 88, 12, 0.3);
-                }
 
                 .submit-button:disabled {
                     opacity: 0.7;

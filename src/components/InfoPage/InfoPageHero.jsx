@@ -18,7 +18,7 @@ const InfoPageHero = () => {
           style={{
             fontFamily: "DM Serif Display",
             fontWeight: 400,
-            fontStyle: "normal", // Regular → normal in CSS
+            fontStyle: "normal",
             fontSize: "60px",
             lineHeight: "65px",
             letterSpacing: "0%",

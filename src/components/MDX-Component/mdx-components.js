@@ -1,4 +1,4 @@
-import BecomePartner from "../InfoPage/BecomePartner";
+import InfoFooter from "../InfoPage/InfoFooter";
 import InfoPageHero from "../InfoPage/InfoPageHero";
 import InfoPageHeroFour from "../InfoPage/InfoPageHeroFour";
 import InfoPageHeroThree from "../InfoPage/InfoPageHeroThree";
@@ -12,24 +12,26 @@ import WhatWeOffer from "../InfoPage/WhatWeOffer";
 import WhereWeWork from "../InfoPage/WhereWeWork";
 import WhoWePartnerWith from "../InfoPage/WhoWePartnerWith";
 import OurBlogs from "../LandingPage/OurBlogs";
-import QuickAnswers from "../LandingPage/QuickAnswers";
+import QuickAnswerAccordion from "../LandingPage/QuickAnswerAccordion";
 import WorkProcess from "../LandingPage/WorkProcess";
+import ContactUs from "../PagesComponent/ContactUs/ContactUs";
 
 export const mdxComponents = {
   WorkProcess,
   OurBlogs,
-  QuickAnswers,
   InfoPageHero,
   MissionSection,
   OurStory,
   WeStandFor,
   WhereWeWork,
   LetsConnect,
-  BecomePartner,
+  InfoFooter,
   InfoPageTwo,
   InfoPageHeroThree,
   InfoPageHeroFour,
   OurStoryTwo,
   WhatWeOffer,
-  WhoWePartnerWith
+  WhoWePartnerWith,
+  ContactUs,
+  QuickAnswerAccordion
 };

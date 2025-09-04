@@ -4,8 +4,57 @@ description: "Let us know if you encounter any issues"
 image: "/images/report-problem-banner.jpg"
 ---
 
-<InfoPageHeroFour/>
-<WhoWePartnerWith/>
-<WhatWeOffer/>
-<WeStandFor/>
-<BecomePartner/>
+<ContactUs contactUsTitle="Make a report us." contactUsText="Found a bug or issue? Let us know so we can fix it quickly."/>
+<div className="container">
+    <div className="row">
+           <div className="ourblogs_header">
+                
+                  <h1
+              className="fw-bold display-5"
+              style={{
+                fontFamily: "DM Serif Display",
+                fontWeight: 400,
+                fontStyle: "normal", // Regular → normal in CSS
+                fontSize: "60px",
+                lineHeight: "65px",
+                letterSpacing: "0%",
+                textAlign: "center",
+                color: "#3658BF",
+              }}
+            >
+              <span>Quick Help</span>{" "}
+              <span style={{ color: "#F26052" }}>Links</span>.
+            </h1>
+
+              <p className='mb-4'>Do you need some help or have some queries ?</p>
+            </div>
+          
+            <div className="border p-4 bg-white rounded">
+                <QuickAnswerAccordion Faq={[
+                        {
+                            id: 1,
+                            question: "How can I become a partner with your company?",
+                            answer:
+                            "To become a partner, please visit our partnership page and fill out the application form. Our team will review your application and get back to you within 5-7 business days.",
+                        },
+                        {
+                            id: 2,
+                            question: "How do I report a product quality issue?",
+                            answer: "To report a product quality issue, please contact our support team at support@example.com with details about the issue.",
+                        },
+                        {
+                            id: 3,
+                            question: "Do I need to create an account to use Vidaki?",
+                            answer: "No, you can browse listings as a guest. However, you’ll need to sign up for an account to post ads, message sellers, save searches, and access other personalized features.",
+                        },
+                        {
+                            id: 4,
+                            question: "I’m facing issues with online payment. What are my options?",
+                            answer: "If you're facing issues with online payment, please try the following options: 1) Check your internet connection. 2) Ensure that your payment details are correct. 3) Try using a different payment method. If the issue persists, contact our support team for assistance.",
+                        }
+                ]}/>
+            </div>
+        
+    </div>
+</div>
+
