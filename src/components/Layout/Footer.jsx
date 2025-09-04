@@ -256,7 +256,7 @@ const Footer = () => {
               </div>
               <div className="contact_details">
                 <div className="footer_links">
-                  <Link href="/referrals-and-invite">
+                  <Link href="/referrals-and-Invite">
                     <span>{t("referralsInviteEarn")}</span>
                   </Link>
                 </div>
