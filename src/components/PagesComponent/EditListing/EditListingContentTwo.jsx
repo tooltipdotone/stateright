@@ -1,4 +1,5 @@
 import { convertPrice, t } from '@/utils'
+import { useEffect, useState } from 'react'
 
 const ContentTwo = ({ AdListingDetails, handleAdListingChange, handleDetailsSubmit, systemSettingsData,currentCurrency }) => {
 
@@ -6,6 +7,26 @@ const ContentTwo = ({ AdListingDetails, handleAdListingChange, handleDetailsSubm
     const currencySymbol = currentCurrency.symbol
     const placeholderLabel = currencyPosition === 'right' ? `00 ${currencySymbol}` : `${currencySymbol} 00`
     const exchangeRate = currentCurrency.exchange_rate
+    
+    // Local state for price input
+    const [priceValue, setPriceValue] = useState('')
+
+    // Track if the user has edited the input
+    const [userEdited, setUserEdited] = useState(false)
+
+    // Update priceValue when API data arrives, but only if user hasn’t typed yet
+    useEffect(() => {
+        if (!userEdited && AdListingDetails.price !== undefined && AdListingDetails.price !== null) {
+            setPriceValue(convertPrice(AdListingDetails.price, exchangeRate))
+        }
+    }, [AdListingDetails.price, exchangeRate, userEdited])
+  
+    const handlePriceChange = (e) => {
+        const value = e.target.value
+        setPriceValue(value)
+        setUserEdited(true)
+        handleAdListingChange({ target: { name: 'price', value } })
+    }
 
     function inpNum(e) {
         e = e || window.event;
@@ -33,7 +54,7 @@ const ContentTwo = ({ AdListingDetails, handleAdListingChange, handleDetailsSubm
 
                     <div className="col-12">
                         <label className='auth_label' htmlFor="price">{t('price')} {currencySymbol}</label>
-                        <input placeholder={placeholderLabel} value={convertPrice(AdListingDetails.price,exchangeRate)} name='price' className={`${AdListingDetails.price !== '' ? 'bg' : ''}`} type='number' onChange={handleAdListingChange} required />
+                        <input placeholder={placeholderLabel} value={priceValue} name='price' className={`${AdListingDetails.price !== '' ? 'bg' : ''}`} type='number' onChange={handlePriceChange} required />
                     </div>
 
                     <div className="col-12">
