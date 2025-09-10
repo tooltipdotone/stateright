@@ -3,7 +3,7 @@
 
 :root {
   --primary-color: #3658BF !important;
-
+  --secondary-color: #F26052 !important;
   --primary-font: "Manrope", sans-serif;
   --other-background-color: #f6f5fa;
 }
@@ -1972,7 +1972,7 @@
 }
 
 .main_signin_redirect {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   cursor: pointer;
   text-decoration: underline;
 }
@@ -2056,6 +2056,17 @@
   color: white;
 }
 
+.secondary__btn {
+  border: 0;
+  outline: none;
+  padding: 8px 16px;
+  font-size: 20px;
+  font-weight: 300;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+  color: white;
+}
+
 .resend_otp_btn {
   border: 0;
   outline: none;
@@ -2106,7 +2117,7 @@
 .auth_modal_footer {
   font-size: 16px;
   font-weight: 400;
-  text-align: center;
+  text-align: left;
 }
 
 .auth_modal_footer a {

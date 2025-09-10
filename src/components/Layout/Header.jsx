@@ -465,20 +465,9 @@ const Header = () => {
                     <div className="right_side">
                         {!isLogin() ? (
                             <>
-                                <div class="verf_email_add_btn rounded-pill d-flex align-items-center" onClick={openLoginModal} >
-                                    {/* {t('login')} */}
-                                    <span className="px-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus me-1" viewBox="0 0 16 16">
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                        </svg>
-                                    </span>
-                                    {/* <span class="px-2 d-none d-lg-inline-block">
-                                        {t('new')}
-                                    </span> */}
-                                </div>
-                                {/* <span className='vl'></span> */}
-                                <div className='nav-item nav-link' >
-                                    {/* {t('register')} */}
+                              
+                                 <div className='nav-item nav-link' >
+                                    
                                     <UserDropdown
                                         onLogin={openLoginModal}
                                         onRegister={openRegisterModal}
