@@ -36,6 +36,7 @@ import CurrencyDropdown from '../HeaderDropdowns/CurrencyDropdown';
 import { CurrentCurrencyData, setCurrentCurrency } from '@/redux/reuducer/currencySlice';
 import SubHeader from './SubHeader';
 import UserDropdown from '../HeaderDropdowns/UserDropdown';
+import AdListingDropdown from '../HeaderDropdowns/AdListingDropdown';
 const ProfileDropdown = dynamic(() => import('../Profile/ProfileDropdown.jsx'))
 const MailSentSucessfully = dynamic(() => import('../Auth/MailSentSucessfully.jsx'), { ssr: false })
 const LoginModal = dynamic(() => import('../Auth/LoginModal.jsx'), { ssr: false })
@@ -474,21 +475,16 @@ const Header = () => {
                                         />
                                 </div>
                             </>
-                        ) : (
-                            <ProfileDropdown closeDrawer={closeDrawer} settings={settings} handleLogout={handleLogout} isDrawer={false} />
-                        )}
+                        ) : null}
 
                            {isLogin() && 
-                            <div className="item_add">
-                                <button className='ad_listing' disabled={isAdListingClicked} onClick={handleCheckLogin}>
-                                    <IoIosAddCircleOutline size={18} className='ad_listing_icon' />
-                                    <span className='adlist_btn' title={t('adListing')}>
-                                        {
-                                            truncate(t('adListing'), 12)
-                                        }
-                                    </span>
-                                </button>
-                            </div>
+                            <AdListingDropdown  
+                            closeDrawer={closeDrawer}
+                            settings={settings}
+                            handleLogout={handleLogout}
+                            isAdListingClicked={isAdListingClicked}
+                            handleCheckLogin={handleCheckLogin}
+                            />
                            }
     
                         <CurrencyDropdown settings={settings} />
