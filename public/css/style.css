@@ -176,6 +176,10 @@
   height: 100% !important;
   gap: 4px;
   padding: 0;
+  background-color: var(--primary-color);
+  padding: 4px 8px;
+  color: #fff;
+  border-radius: 8px;
 }
 
 .language_dropdown {
@@ -3054,7 +3058,6 @@
 .profile_img_div {
   aspect-ratio: 1/1;
   border-radius: 50%;
-  border: 1px solid var(--other-background-color);
   object-fit: cover;
 }
 

@@ -7,13 +7,12 @@ import { useRouter } from "next/navigation"
 import { BiChat, BiDollarCircle, BiReceipt } from "react-icons/bi"
 import { FaAngleDown } from "react-icons/fa6"
 import { FiUser } from "react-icons/fi"
-import { IoMdNotificationsOutline } from "react-icons/io"
+import { IoMdNotificationsOutline,IoIosAddCircleOutline } from "react-icons/io"
 import { LiaAdSolid } from "react-icons/lia"
 import { LuHeart } from "react-icons/lu"
 import { MdDomainVerification, MdOutlineRateReview } from "react-icons/md"
 import { RiLogoutCircleLine } from "react-icons/ri"
 import { useSelector } from "react-redux"
-
 const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
 
     const router = useRouter()
@@ -22,6 +21,16 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
     const items = [
         {
             key: 1,
+            href: '/ad-listing',
+            label: (
+                <div className="profDropIconCont">
+                    <span><IoIosAddCircleOutline size={16} /></span>
+                    <span>{truncate(t("adListing"), 12)}</span>
+                </div>
+            )
+        },
+        {
+            key: 2,
             href: '/profile/edit-profile',
             label: (
                 <div className="profDropIconCont">
@@ -31,7 +40,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 2,
+            key: 3,
             href: '/notifications',
             label: (
                 <div className="profDropIconCont">
@@ -41,7 +50,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 3,
+            key: 4,
             href: '/chat',
             label: (
                 <div className="profDropIconCont">
@@ -51,7 +60,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 4,
+            key: 5,
             href: '/user-subscription',
             label: (
                 <div className="profDropIconCont">
@@ -61,7 +70,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 5,
+            key: 6,
             href: '/ads',
             label: (
                 <div className="profDropIconCont">
@@ -71,7 +80,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 6,
+            key: 7,
             href: '/favourites',
             label: (
                 <div className="profDropIconCont">
@@ -81,7 +90,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 7,
+            key: 8,
             href: '/transactions',
             label: (
                 <div className="profDropIconCont">
@@ -91,7 +100,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 8,
+            key: 9,
             href: '/reviews',
             label: (
                 <div className="profDropIconCont">
@@ -101,7 +110,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
             )
         },
         {
-            key: 9,
+            key: 10,
             label: (
                 <div className="profDropIconCont">
                     <span><RiLogoutCircleLine size={16} /></span>
@@ -113,7 +122,7 @@ const ProfileDropdown = ({ closeDrawer, settings, handleLogout, isDrawer }) => {
 
     const handleMenuClick = (props) => {
         closeDrawer()
-        if (Number(props.key) === 9) {
+        if (Number(props.key) === 10) {
             handleLogout()
             return
         }

@@ -478,13 +478,12 @@ const Header = () => {
                         ) : null}
 
                            {isLogin() && 
-                            <AdListingDropdown  
-                            closeDrawer={closeDrawer}
-                            settings={settings}
-                            handleLogout={handleLogout}
-                            isAdListingClicked={isAdListingClicked}
-                            handleCheckLogin={handleCheckLogin}
-                            />
+                                <ProfileDropdown 
+                                    closeDrawer={closeDrawer}
+                                    settings={settings}
+                                    handleLogout={handleLogout}
+                                    isDrawer={false} 
+                                />
                            }
     
                         <CurrencyDropdown settings={settings} />
