@@ -445,7 +445,7 @@ const Header = () => {
 
                     {(cityData?.city || cityData?.state || cityData?.country) ? (
                         <div className='home_header_location' onClick={openLocationEditModal}>
-                            <GrLocation size={16} />
+                            <GrLocation className="text-danger"  size={16} />
                             <p className='header_location' title={[cityData?.city, cityData?.state, cityData?.country].filter(Boolean).join(", ")}>
                                 {
                                     truncate(
@@ -459,7 +459,7 @@ const Header = () => {
                         </div>
                     ) : (
                         <div className='home_header_location' onClick={openLocationEditModal}>
-                            <GrLocation size={16} />
+                            <GrLocation className="text-danger"  size={16} />
                             <p className='header_location'>{t('addLocation')}</p>
                         </div>
                     )}
@@ -503,7 +503,7 @@ const Header = () => {
                 <ul className="mobile_nav">
                     {cityData &&
                         <li className='mob_header_location' onClick={openLocationEditModal}>
-                            <GrLocation size={16} />
+                            <GrLocation className="text-danger" size={16} />
                             <p>
                                 {
                                     [cityData?.city, cityData?.state, cityData?.country]
