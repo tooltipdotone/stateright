@@ -5,7 +5,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { GiHamburgerMenu } from "react-icons/gi";
 import dynamic from 'next/dynamic';
 import { Drawer, Select, Spin } from 'antd'
-import { GrLocation } from "react-icons/gr";
+import { MdLocationPin } from "react-icons/md";
 import { FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
 import 'swiper/css';
@@ -445,7 +445,7 @@ const Header = () => {
 
                     {(cityData?.city || cityData?.state || cityData?.country) ? (
                         <div className='home_header_location' onClick={openLocationEditModal}>
-                            <GrLocation className="text-danger"  size={16} />
+                            <MdLocationPin className="text-danger"  size={18} />
                             <p className='header_location' title={[cityData?.city, cityData?.state, cityData?.country].filter(Boolean).join(", ")}>
                                 {
                                     truncate(
@@ -459,7 +459,7 @@ const Header = () => {
                         </div>
                     ) : (
                         <div className='home_header_location' onClick={openLocationEditModal}>
-                            <GrLocation className="text-danger"  size={16} />
+                            <MdLocationPin className="text-danger"  size={18} />
                             <p className='header_location'>{t('addLocation')}</p>
                         </div>
                     )}
@@ -503,7 +503,7 @@ const Header = () => {
                 <ul className="mobile_nav">
                     {cityData &&
                         <li className='mob_header_location' onClick={openLocationEditModal}>
-                            <GrLocation className="text-danger" size={16} />
+                            <MdLocationPin className="text-danger" size={18} />
                             <p>
                                 {
                                     [cityData?.city, cityData?.state, cityData?.country]
