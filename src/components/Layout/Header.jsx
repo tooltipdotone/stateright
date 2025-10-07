@@ -6,6 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import dynamic from 'next/dynamic';
 import { Drawer, Select, Spin } from 'antd'
 import { MdLocationPin } from "react-icons/md";
+import LocationIcon from "../../../public/assets/location-24.svg"
 import { FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
 import 'swiper/css';
@@ -445,7 +446,7 @@ const Header = () => {
 
                     {(cityData?.city || cityData?.state || cityData?.country) ? (
                         <div className='home_header_location' onClick={openLocationEditModal}>
-                            <MdLocationPin className="text-danger"  size={18} />
+                            <img loading="lazy" height={60} width={60} src={LocationIcon.src} alt="location" />
                             <p className='header_location' title={[cityData?.city, cityData?.state, cityData?.country].filter(Boolean).join(", ")}>
                                 {
                                     truncate(
@@ -503,7 +504,7 @@ const Header = () => {
                 <ul className="mobile_nav">
                     {cityData &&
                         <li className='mob_header_location' onClick={openLocationEditModal}>
-                            <MdLocationPin className="text-danger" size={18} />
+                            <img loading="lazy" height={60} width={60} src={LocationIcon.src} alt="location" />
                             <p>
                                 {
                                     [cityData?.city, cityData?.state, cityData?.country]
