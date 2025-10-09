@@ -2,7 +2,23 @@
 import Image from "next/image";
 import OurMissionImage from "../../../public/assets/info-page/our-mission.jpg";
 
-const  MissionSection = () => {
+const  MissionSection = ({missionText = (<p
+            className="mt-3"
+            style={{
+              fontFamily: "Roboto",
+              fontWeight: 400,
+              fontStyle: "normal",
+              fontSize: "24px",
+              lineHeight: "100%",
+              letterSpacing: "0",
+            }}
+          >
+            To make technology accessible, useful, and delightful for people and
+            businesses around the world. We believe that great digital products
+            start with empathy and grow through continuous improvement. Every
+            feature we ship, every update we make — it's all rooted in listening
+            to our community and responding with care.
+          </p>)}) => {
   return (
     <section className="container py-5">
       <div className="row align-items-center">
@@ -22,23 +38,7 @@ const  MissionSection = () => {
             <span style={{ color: "#F37545" }}>Mission</span>
           </h2>
 
-          <p
-            className="mt-3"
-            style={{
-              fontFamily: "Roboto",
-              fontWeight: 400,
-              fontStyle: "normal",
-              fontSize: "24px",
-              lineHeight: "100%",
-              letterSpacing: "0",
-            }}
-          >
-            To make technology accessible, useful, and delightful for people and
-            businesses around the world. We believe that great digital products
-            start with empathy and grow through continuous improvement. Every
-            feature we ship, every update we make — it's all rooted in listening
-            to our community and responding with care.
-          </p>
+          {missionText}
         </div>
 
         {/* Image Section - Responsive */}

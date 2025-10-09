@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import MedalImage from "../../../public/assets/info-page/medal.png";
 import CommunityImage from "../../../public/assets/info-page/communities.png";
 import wordOfMouthImage from "../../../public/assets/info-page/word-of-mouth.png";
@@ -17,7 +17,7 @@ const OurStory = () => {
               <Image src={MedalImage} alt="Trophy" width={50} height={50} />
             </div>
             <p className="story-text mt-4">
-              Launching our first MVP in a tiny coworking space
+              Launching our first MVP in a small coworking space
             </p>
           </div>
         </div>
@@ -28,7 +28,9 @@ const OurStory = () => {
               <Image src={CommunityImage} alt="Globe" width={50} height={50} />
             </div>
             <p className="story-text mt-4">
-              Expanding into new regions and serving diverse communities
+              Expanding across 30+ countries in Europe, Central Asia, and the
+              South Caucasus, adapting to diverse cultural and economic
+              realities
             </p>
           </div>
         </div>
@@ -38,14 +40,19 @@ const OurStory = () => {
       <div className="row justify-content-center text-center mb-5">
         <div className="col-md-10">
           <h2 className="our-story-title mb-4">
-             
             <span style={{ color: "#3658BF" }}>Our</span>{" "}
             <span style={{ color: "#F37545" }}>Story</span>
           </h2>
           <p className="story-paragraph">
-            What began as a small side project has evolved into a trusted
-            platform serving thousands of users. Along the way, we’ve learned,
-            iterated, and grown – guided by feedback and inspired by our users.
+            What began as a side project among innovators across Eurasia has
+            evolved into a trusted platform serving thousands of Vidas. We
+            started with a shared belief that trade should be fair, accessible,
+            and meaningful — blending traditional collective exchange with the
+            convenience of modern technology to enable not just commerce, but
+            connection.
+            <br />
+            From humble beginnings, Vidaki has grown into a platform that serves Vidas across every
+corner of Eurasia, guided by feedback and inspired by the collectives we serve.
             <br />
             Our journey includes:
           </p>
@@ -60,7 +67,8 @@ const OurStory = () => {
               <Image src={wordOfMouthImage} alt="Ear" width={50} height={50} />
             </div>
             <p className="story-text mt-4">
-              Scaling through word-of-mouth and authentic connections
+              Scaling through word-of-mouth and authentic connections from Vidas
+              around the world
             </p>
           </div>
         </div>
@@ -101,11 +109,12 @@ const OurStory = () => {
           font-family: "Roboto", sans-serif;
           font-weight: 400;
           font-style: normal;
-          font-size: 22.34px;
+          font-size: 17.34px;
           line-height: 100%;
           letter-spacing: 0;
           text-align: center;
           padding: 12px;
+          height: 150px;
         }
         .our-story-title {
           font-family: "Manrope", sans-serif;
@@ -129,6 +138,6 @@ const OurStory = () => {
       `}</style>
     </div>
   );
-}
+};
 
 export default OurStory;

@@ -1,4 +1,4 @@
-'use client'
+"use client";
 const LetsConnect = () => {
   return (
     <section className="py-5" style={{ background: "#FFEC8D" }}>
@@ -31,10 +31,13 @@ const LetsConnect = () => {
           </div>
           <div className="col-12 col-lg-6">
             <p className="mb-2">
-              We’d love to hear from you. Whether it’s feedback, collaboration,
-              or just a
+              We'd love to hear from you. Whether it's feedback, collaboration,
+              or just a hello — feel free to reach out.
               <br />
-              hello — feel free to reach out.
+              <b>Email:</b> hello@vidaki.com <br />
+              <b>Support:</b> support@vidaki.com <br />
+              <b>Operating Across:</b> 30+ countries in Europe, Central Asia, and the South
+              Caucasus
             </p>
             <p className="mb-0 text-muted">
               Thank you for being a part of our journey.
