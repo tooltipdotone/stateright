@@ -6,58 +6,159 @@ date: "2023-10-05"
 ---
 
 <div className='gradientBg'>
-  <h1 style={{
-    textAlign: 'center',
-    color: '#F26052',
-    fontWeight: 700,
-    fontSize: '2.5rem',
-    marginBottom: '10px',
-  }}>Careers.</h1>
-  <div style={{display: 'flex', justifyContent: 'center', width: '100%',marginBottom: 32}}>
-    <p style={{
-      maxWidth: 600,
-      color: '#222',
-      fontSize: '1rem',
+ <div className='container'>
+  <div className='py-5'>
+    <h1 style={{
       textAlign: 'center',
-    }}>
-      Join our talent community and unlock endless possibilities. Collaborate with experts, explore diverse career paths, and be part of a dynamic team shaping tomorrow’s technological landscape at Fairways.
-    </p>
-  </div>
-  <div style={{maxWidth: 600, margin: '0 auto'}}>
-    {[
-      'Sales & Business Development Executive',
-      'Supply Chain & Logistics Coordinator',
-      'Procurement & Vendor Relations Specialist',
-      'Marketing & Branding Executive',
-      'Customer Support & Client Relations Officer',
-      'Finance & Accounts Assistant',
-      'Web & Digital Solutions Associate',
-    ].map((role, i) => (
-      <div key={role} style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        background: i === 0 ? '#fff' : '#3B5CB8',
-        color: i === 0 ? '#222' : '#fff',
-        fontWeight: i === 0 ? 600 : 500,
-        borderRadius: 8,
-        boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
-        marginBottom: 16,
-        padding: '18px 24px',
+      fontWeight: 700,
+      fontSize: '2.5rem',
+      marginBottom: '10px',
+    }}>Join Our <span className='text-second'>Team.</span></h1>
+    <div style={{display: 'flex', justifyContent: 'center', width: '100%',marginBottom: 32}}>
+      <p style={{
+        maxWidth: 600,
+        color: '#222',
         fontSize: '1rem',
+        textAlign: 'center',
       }}>
-        <span>{role}</span>
-        <a href="#" style={{
-          color: i === 0 ? '#3B5CB8' : '#fff',
-          textDecoration: 'none',
-          fontWeight: 500,
-          display: 'flex',
-          alignItems: 'center',
-        }}>
-          Know More <span style={{marginLeft: 6, fontSize: '1.1em'}}>&rarr;</span>
-        </a>
-      </div>
-    ))}
+        Help build the future of local trade across Eurasia. We're looking for passionate people  who believe in sustainable commerce and community empowerment
+      </p>
+    </div>
   </div>
+  {/* our mission */}
+  <div>
+     <div className='w-75 mx-auto'>
+        <h2 className='text-center fw-bold'>Our Missions</h2>
+        <p className='my-5'>At Vidaki, we connect communities across 38 countries through trusted, sustainable local trade. We're building more than a marketplace—we're creating a platform that empowers individuals, small businesses, and communities to trade fairly, safely, and responsibly.</p>
+     </div>
+       <div className="row gap-4  justify-content-center">
+        <div className="col-md-6 col-lg-3">
+          <div className="career-mission-card">
+            <h3 className="text-center">Trust & Safety</h3>
+            <p className="text-center">We prioritize user security and platform integrity in everything we do.</p>
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="career-mission-card">
+            <h3 className="text-center">Sustainability</h3>
+            <p className="text-center">We promote circular economy through reuse, barter, and responsible trade.</p>
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="career-mission-card">
+            <h3 className="text-center">Simplicity</h3>
+            <p className="text-center">We build intuitive tools that make local commerce accessible to everyone.</p>
+          </div>
+        </div>
+        <div className="col-md-6 col-lg-3">
+          <div className="career-mission-card">
+            <h3 className="text-center">Community First</h3>
+            <p className="text-center">We empower local economies and support small businesses across Eurasia.</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  {/* available positions */}
+  <div className='my-5'>
+   <h2 className='text-center fw-bold my-2'>Open Positions</h2>
+   <br/>
+   <div className="card shadow-sm border-0 mt-2">
+   <div className="card-body p-5">
+      <h3 className="card-title h5 mb-3">Senior Backend Engineer</h3>
+      
+      <div className="d-flex flex-wrap gap-2 mb-3">
+        <span className="badge bg-light text-dark border">Remote (Eurasia)</span>
+        <span className="badge bg-light text-dark border">Full-time</span>
+        <span className="badge bg-primary">Engineering</span>
+      </div>
+      
+      <p className="card-text mb-3">
+        We're looking for an experienced backend engineer to help scale our platform across 38 countries. 
+        You'll work on high-traffic systems, implement new features, and ensure platform reliability for millions of users.
+      </p>
+      
+      <h6 className="fw-bold mb-2">Requirements:</h6>
+      <ul className="list-unstyled mb-3">
+        <li className="mb-1">• 5+ years experience with PHP, Python, or Node.js</li>
+        <li className="mb-1">• Strong knowledge of MySQL/PostgreSQL and Redis</li>
+        <li className="mb-1">• Experience with RESTful APIs and microservices</li>
+        <li className="mb-1">• Understanding of scalability and performance optimization</li>
+        <li>• English proficiency; additional Eurasian languages a plus</li>
+       </ul>
+      
+        <button className="secondary__btn">Apply Now</button>
+      </div>
+    </div>
+    <br/>
+  <div className="row g-4">
+  <br/>
+  <div className="card p-4 col-12">
+    <h2 className="my-4 text-center fw-bold">Why Join Vidaki?</h2>
+    
+    <div className="row g-3">
+      <div className="col-md-6 col-lg-4">
+        <div className="p-3 border rounded h-100">
+          <h6 className="fw-bold">Remote-First</h6>
+          <p className="mb-0 small text-muted">Work from anywhere across Eurasia</p>
+        </div>
+      </div>
+      
+      <div className="col-md-6 col-lg-4">
+        <div className="p-3 border rounded h-100">
+          <h6 className="fw-bold">Meaningful Work</h6>
+          <p className="mb-0 small text-muted">Impact millions of users daily</p>
+        </div>
+      </div>
+      
+      <div className="col-md-6 col-lg-4">
+        <div className="p-3 border rounded h-100">
+          <h6 className="fw-bold">Competitive Salary</h6>
+          <p className="mb-0 small text-muted">Fair compensation based on experience</p>
+        </div>
+      </div>
+      
+      <div className="col-md-6 col-lg-4">
+        <div className="p-3 border rounded h-100">
+          <h6 className="fw-bold">Diverse Team</h6>
+          <p className="mb-0 small text-muted">Work with people from 38 countries</p>
+        </div>
+      </div>
+      
+      <div className="col-md-6 col-lg-4">
+        <div className="p-3 border rounded h-100">
+          <h6 className="fw-bold">Growth Opportunities</h6>
+          <p className="mb-0 small text-muted">Learn and advance your career</p>
+        </div>
+      </div>
+      
+      <div className="col-md-6 col-lg-4">
+        <div className="p-3 border rounded h-100">
+          <h6 className="fw-bold">Flexible Hours</h6>
+          <p className="mb-0 small text-muted">Balance work and life</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div className="col-12 mt-4">
+    <hr className="my-4"/>
+    
+    <div className="text-center py-4">
+      <h2 className="fw-bold mb-3">Don't See Your Role?</h2>
+      <p className="text-muted mb-3">
+        We're always looking for talented people who share our mission. 
+        Send us your resume and tell us how you'd like to contribute.
+      </p>
+      <div className="d-flex justify-content-center align-items-center gap-2">
+        <span className="fw-medium">Email:</span>
+        <a href="mailto:careers@vidaki.com" className="text-primary">careers@vidaki.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+  </div>
+  
+</div>
 </div>
 

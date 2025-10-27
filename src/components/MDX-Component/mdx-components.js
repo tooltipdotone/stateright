@@ -1,6 +1,6 @@
 import InfoFooter from "../InfoPage/InfoFooter";
 import InfoPageHero from "../InfoPage/InfoPageHero";
-import InfoPageHeroFour from "../InfoPage/InfoPageHeroFour";
+import PartnersHero from "../InfoPage/PartnersHero";
 import InfoPageHeroThree from "../InfoPage/InfoPageHeroThree";
 import InfoPageTwo from "../InfoPage/InfoPageHeroTwo";
 import LetsConnect from "../InfoPage/LetsConnect";
@@ -28,7 +28,7 @@ export const mdxComponents = {
   InfoFooter,
   InfoPageTwo,
   InfoPageHeroThree,
-  InfoPageHeroFour,
+  PartnersHero,
   OurStoryTwo,
   WhatWeOffer,
   WhoWePartnerWith,

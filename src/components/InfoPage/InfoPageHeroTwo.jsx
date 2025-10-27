@@ -5,9 +5,9 @@ import HeroImageWork from "../../../public/assets/info-page/safetrading-1.png";
 
 const InfoPageTwo = () => {
   return (
-    <div className="gradientBg" >
+    <div>
       <section
-        className="gradientBg py-5 position-relative"
+        className=" py-5 position-relative"
         style={{
           minHeight: "100vh",
           display: "flex",
@@ -16,12 +16,7 @@ const InfoPageTwo = () => {
       >
         <div
           className="position-absolute top-0 start-0 w-100"
-          style={{
-            height: "2px",
-            background:
-              "linear-gradient(90deg, rgba(255, 236, 141, 0.8) 0%, transparent 100%)",
-            zIndex: 1,
-          }}
+          
         />
 
         <div
@@ -59,8 +54,8 @@ const InfoPageTwo = () => {
                   marginBottom: "1.5rem",
                 }}
               >
-                Safe Trading {" "}
-                <span style={{ color: "#F26052" }}>Guide</span>.
+                Safety Tips &  
+               Community <span style={{ color: "#F26052" }}> Guidelines</span>.
               </h1>
 
               <p
@@ -74,7 +69,7 @@ const InfoPageTwo = () => {
                   marginLeft: "0",
                 }}
               >
-               At Vidaki, we value trust and transparency in every transaction. This guide is designed to help our buyers, suppliers, and partners trade securely with us and avoid common risks.
+               At Vidaki, we're committed to building a trusted marketplace where buyers, sellers, and traders  can connect safely across Eurasia. Most users are honest and well-meaning, but taking a few  precautions helps protect everyone.
               </p>
             </div>
 

@@ -76,12 +76,12 @@ const Blogs = () => {
             {/* <BreadcrumbComponent title2={t("ourBlogs")} /> */}
             <div className='container'>
                 <div className="static_div">
-                    <div className="main_title">
-                        <h2 style={{color : "#3658BF"}}>
+                    
+                        <h2 >
                             {/* {t('ourBlogs')} */}
-                            <span>Blogs & </span> <span style={{color : '#F26052'}}>Latest News</span>.
+                            <span>Blogs & </span> <span className="text-second">Latest News</span>.
                         </h2>
-                    </div>
+                    
                     <div className="page_content">
                         <div className="row blog_separator">
                             <div className="col-12 col-md-12 col-lg-9">

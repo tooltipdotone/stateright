@@ -1,7 +1,7 @@
 "use client";
 const LetsConnect = () => {
   return (
-    <section className="py-5" style={{ background: "#FFEC8D" }}>
+    <section className="py-5 bg-third" >
       <div className="container">
         <div className="row align-items-center gy-3">
           <div className="col-12 col-lg-6">
