@@ -8,23 +8,25 @@ image: "/images/terms-conditions-banner.jpg"
 <div className='gradientBg'>
         
   <div className="container">
-  <div className="text-center py-5">
-            <h2 className="fw-bold mb-4" style={{ fontFamily: "DM Serif Display, serif" , fontWeight: 400,
-                fontSize: "clamp(20px, 5vw, 60px)" , lineHeight: "1.1" , color: "#3658BF" , marginBottom: "2rem" , }}>
-                <span>Terms & </span>
-                <span style={{ color: "#F26052" }}>Conditions</span>.
+     <div className="text-center py-5">
+            <h2 className="fw-bold mb-4 hero-font-color" style={{ fontFamily: "DM Serif Display, serif" , fontWeight: 400,
+                fontSize: "clamp(20px, 5vw, 60px)" , lineHeight: "1.1" , marginBottom: "2rem" , }}>
+                <span>Terms of </span>
+                <span className='text-second'>Use</span>.
             </h2>
             <p className="lead">
               <b>Effective Date:</b> 22 October 2025 &nbsp; <b>Last Updated:</b> 22 October 2025
             </p>
 
-        </div>
-   <div className='border p-5 bg-white rounded'>
+    </div>
+   <div className='border p-2 p-lg-5 bg-white rounded'>
     
-  
-      <section className="mb-5">
-        <h2>1. Introduction</h2>
-        <br/>
+  <InfoAccordion
+    accordionData={[
+        {
+            title: "1. Introduction",
+            content: ( <section className="mb-5">
+         <br/>
         <p>
           Welcome to <strong>Vidaki</strong> ("we," "us," or "our"), a global classifieds marketplace operated by <strong>Vidaki Online Services Ltd.</strong>, connecting local buyers, sellers, and small businesses across Eurasia. Vidaki
           enables users to post, view, and engage in transactions involving new and used goods and
@@ -44,11 +46,12 @@ image: "/images/terms-conditions-banner.jpg"
           Poland, Republic of Moldova, Romania, Russia, Serbia, Slovakia, Slovenia, Sweden, Tajikistan,
           Turkey, Turkmenistan, Ukraine, and Uzbekistan.
         </p>
-      </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>2. Eligibility</h2>
+      </section>) 
+      },
+      {
+        title : "2. Eligibility",
+        content : (<section className="mb-5">
+        
         <p>To use Vidaki, you must:</p>
         <ul>
           <li>Be at least 18 years old or have reached the age of majority in your jurisdiction,
@@ -61,11 +64,11 @@ image: "/images/terms-conditions-banner.jpg"
           Vidaki reserves the right to suspend or terminate access if eligibility conditions are not met or if
           use violates applicable laws.
         </p>
-      </section>
-
-      
-      <section className="mb-5">
-        <h2>3. Services Provided</h2>
+      </section>)
+      },
+      {
+        title: "3. Services Provided", 
+        content: (<> <section className="mb-5">
         <p>Vidaki provides a classifieds listing platform that enables users to:</p>
         <ul>
           <li>Post, view, and manage listings for goods or services.</li>
@@ -139,10 +142,12 @@ image: "/images/terms-conditions-banner.jpg"
         agreements in writing.
         </p>
       </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>4. User Responsibilities</h2>
+      </>  ) 
+      }, 
+      {
+        title: "4. User Responsibilities",
+        content : ( <section className="mb-5">
+        
         <p>Users agree to:</p>
         <ul>
           <li>Provide accurate, complete, and current information during registration and when
@@ -157,10 +162,11 @@ image: "/images/terms-conditions-banner.jpg"
         </ul>
         <p>You are solely responsible for all content posted, interactions made, and transactions
          conducted through your account.</p>
-      </section>
-      <hr/>
-      <section className="mb-5">
-        <h2>5. Prohibited Content and Conduct</h2>
+      </section>)
+      }, 
+      {
+        title : "5. Prohibited Content and Conduct", 
+        content : (<section className="mb-5">
         <p>Users must not post, upload, share, or facilitate:</p>
 
         <h3>Illegal or Restricted Items:</h3>
@@ -196,11 +202,12 @@ image: "/images/terms-conditions-banner.jpg"
           violates these Terms, applicable law, or community standards — with or
           without notice.
         </p>
-      </section>
+      </section>)
+      }, 
+      {
+        title : "6. Account Suspension and Termination", 
+        content : (<section className="mb-5">
 
-      <hr/>
-      <section className="mb-5">
-        <h2>6. Account Suspension and Termination</h2>
         <p>
           Vidaki may suspend, restrict, or terminate an account immediately and without prior notice if:
         </p>
@@ -231,11 +238,12 @@ image: "/images/terms-conditions-banner.jpg"
           Termination does not entitle users to refunds for paid services unless required by applicable
           consumer law.
         </p>
-      </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>7. Payments, Fees, and Refunds</h2>
+      </section>)
+      }, 
+      {
+        title : "7. Payments, Fees, and Refunds", 
+        content : ( <section className="mb-5">
+       
 
         <h3>Paid Services:</h3>
         <p>
@@ -275,11 +283,12 @@ image: "/images/terms-conditions-banner.jpg"
           from paid promotional services.
         </p>
       </section>
-
-        <hr/>
-        <section className="mb-5">
-          <h2>8. Content Ownership and Licensing</h2>
-
+)
+      }, 
+      {
+        title: "8. Content Ownership and Licensing", 
+        content : (<section className="mb-5">
+    
           <h3>Your Content:</h3>
           <p>
             You retain full ownership of all content you upload, including text, photographs, descriptions,
@@ -316,11 +325,12 @@ image: "/images/terms-conditions-banner.jpg"
             </a>{" "}
             with detailed information.
           </p>
-        </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>9. Platform Availability and Maintenance</h2>
+        </section>)
+      }, 
+      {
+        title: "9. Platform Availability and Maintenance", 
+        content : (<section className="mb-5">
+       
 
         <p>While Vidaki strives to maintain reliable service, we:</p>
         <ul>
@@ -355,10 +365,11 @@ image: "/images/terms-conditions-banner.jpg"
           or other legally recognized safeguards.
         </p>
       </section>
-
-      <hr/>
-      <section className="mb-5">
-          <h2>10. Dispute Resolution and Governing Law</h2>
+)
+      }, 
+      {
+        title : "10. Dispute Resolution and Governing Law", 
+        content : (<section className="mb-5">
 
           <h3>Governing Law:</h3>
           <p>
@@ -432,10 +443,11 @@ image: "/images/terms-conditions-banner.jpg"
             compliance with all applicable restrictions.
           </p>
         </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>11. Disclaimer of Warranties</h2>
+)
+      }, 
+      {
+        title : "11. Disclaimer of Warranties", 
+        content : (<section className="mb-5">
 
         <p className="uppercase font-semibold">
           THE VIDAKI PLATFORM AND SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE"
@@ -459,11 +471,12 @@ image: "/images/terms-conditions-banner.jpg"
           You use the Platform entirely at your own risk. Vidaki does not endorse, verify, or guarantee
           any user, listing, or transaction.
         </p>
-      </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>12. Limitation of Liability</h2>
+      </section>)
+      }, 
+      {
+        title : "12. Limitation of Liability", 
+        content : (<section className="mb-5">
+       
 
         <p>To the fullest extent permitted by applicable law:</p>
 
@@ -501,11 +514,12 @@ image: "/images/terms-conditions-banner.jpg"
           These limitations reflect the allocation of risk between users and Vidaki and form an essential
           basis of the agreement.
         </p>
-      </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>13. Indemnification</h2>
+      </section>)
+      }, 
+      {
+        title : "13. Indemnification", 
+        content : (<section className="mb-5">
+       
 
         <p>
           You agree to indemnify, defend, and hold harmless Vidaki, its affiliates, officers, directors,
@@ -526,12 +540,12 @@ image: "/images/terms-conditions-banner.jpg"
           Vidaki reserves the right to assume exclusive defense and control of any matter subject to
           indemnification, and you agree to cooperate fully with our defense.
         </p>
-      </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>14. Changes to These Terms</h2>
-
+      </section>)
+      }, 
+      {
+        title : "14. Changes to These Terms", 
+        content : ( <section className="mb-5">
+  
         <p>
           Vidaki may modify these Terms periodically to reflect:
         </p>
@@ -557,11 +571,11 @@ image: "/images/terms-conditions-banner.jpg"
           Continued use of the Platform after changes take effect constitutes acceptance of the revised Terms.
           If you do not agree to the changes, you must stop using the Platform and may close your account.
         </p>
-      </section>
-
-      <hr/>
-      <section className="mb-5">
-        <h2>15. Severability</h2>
+      </section>)
+      }, 
+      {
+        title: "15. Severability", 
+        content : (<section className="mb-5">
 
         <p>
           If any provision of these Terms is found to be invalid, illegal, or unenforceable by a court of
@@ -574,10 +588,12 @@ image: "/images/terms-conditions-banner.jpg"
         </ul>
 
         <p>The remaining provisions shall continue in full force and effect.</p>
-      </section>
-      <section className="mb-5">
-      <hr/>
-      <h2>16. Force Majeure</h2>
+      </section>)
+      }, 
+      {
+        title : "16. Force Majeure", 
+        content : (<section className="mb-5">
+      
       <p>
         Vidaki shall not be liable for any failure or delay in performance resulting from circumstances
         beyond our reasonable control, including but not limited to:
@@ -592,10 +608,13 @@ image: "/images/terms-conditions-banner.jpg"
         In such events, Vidaki's obligations shall be suspended for the duration of the force majeure
         condition.
       </p>
-    </section>
-    <hr/>
-    <section className="mb-5">
-      <h2>17. Entire Agreement</h2>
+    </section>)
+      }, 
+      {
+        title : "17. Entire Agreement", 
+        content : (<>
+          <section className="mb-5">
+
       <p>
         These Terms, together with Vidaki's Privacy Policy and Community Guidelines, constitute the
         entire agreement between you and Vidaki and supersede all prior agreements, understandings,
@@ -616,15 +635,26 @@ image: "/images/terms-conditions-banner.jpg"
       <p>Privacy Inquiries: <a href="mailto:privacy@vidaki.com" className="text-blue-600 underline">privacy@vidaki.com</a></p>
       <p>Registered Address: [Insert Registered Office Address]</p>
     </section>
-    <hr/>
-    <section className="mb-5">
-      <h2>19. Language &amp; Translation</h2>
+    </>
+    )
+      }, 
+      {
+        title : "19. Language &amp; Translation", 
+        content : (<section className="mb-5">
+      
       <p>
         These Terms are originally drafted in English. Translated versions may be provided for
         convenience, but in the event of any conflict or inconsistency, the English version shall prevail
         to the fullest extent permitted by law.
       </p>
-    </section>
+    </section>)
+      }
+     ]}
+     showTitle="false"
+    />
+
+  
+    
     <hr/>
     <section className="mb-5">
       <h2>Your Trust, Our Commitment</h2>

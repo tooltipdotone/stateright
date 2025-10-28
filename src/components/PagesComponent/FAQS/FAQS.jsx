@@ -32,7 +32,7 @@ const FAQS = () => {
     <section className="gradientBg static_pages">
       <div className="container">
         <div className="static_div">
-          <div className="text-center">
+          <div className="text-center py-5">
             <h2
             className="fw-bold mb-4"
             style={{
@@ -40,15 +40,14 @@ const FAQS = () => {
               fontWeight: 400,
               fontSize: "clamp(20px, 5vw, 60px)",
               lineHeight: "1.1",
-              color: "#3658BF",
               marginBottom: "2rem",
             }}
           >
-            <span style={{ color: "#3658BF" }}>Frequently Asked </span>{" "}
-            <span style={{ color: "#F26052" }}>Questions.</span>
+            <span >Frequently Asked </span>{" "}
+            <span className="text-second">Questions.</span>
           </h2>
 
-          <p className="pb-4">Do you need some help or have some queries ?</p>
+          <p className="pb-4">Find quick answers to common questions</p>
           </div>
           <div className="page_content p-4 bg-white rounded">
             <div className="quickanswer_accordion_wrapper">

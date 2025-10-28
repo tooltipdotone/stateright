@@ -18,10 +18,13 @@ image: "/images/privacy-policy-banner.jpg"
         </div>
         <div className="container mb-5">
             
-            <div className='border p-5 bg-white rounded'>
-                <section id="introduction">
-                    <h2>1. Introduction</h2>
-                    <br/>
+            <div className='border p-2 p-lg-5  bg-white rounded'>
+            <InfoAccordion
+            accordionData={[
+                {
+                    title : "1. Introduction", 
+                    content : (<section id="introduction">
+                
                     <p>Welcome to <b>Vidaki</b>  (“we,” “our,” “us”). Vidaki is a marketplace built on trust. We connect local
                         buyers, sellers, and small businesses across <b>30+ countries in Europe, Central Asia, and the
                         South Caucasus</b>, supporting both monetary transactions and fair bartering exchanges.</p>
@@ -29,11 +32,12 @@ image: "/images/privacy-policy-banner.jpg"
                         Privacy Policy explains how we collect, use, share, and protect your personal information in
                         compliance with applicable data protection laws in the regions where we operate.</p>
                     <p><b>By using Vidaki's website, mobile apps, or related services, you agree to this Privacy Policy.</b></p>
-                </section>
-                <br/>
-                <section id="legal-frameworks">
-                    <h2>2. Applicable Legal Frameworks</h2>
-                    <br/>
+                </section>)
+                }, 
+                {
+                    title : "2. Applicable Legal Frameworks", 
+                    content: (<section id="legal-frameworks">
+                   
                     <p>Vidaki complies with data protection regulations based on your location: </p>
                     <b>A. European Union &amp; European Economic Area</b>
                     <p>For users in: Bulgaria, Croatia, Cyprus, Czechia, Denmark, Estonia, Finland, Germany, Greece,
@@ -68,11 +72,12 @@ image: "/images/privacy-policy-banner.jpg"
                     <p>For users in: Afghanistan, Mongolia</p>
                     <p>We comply with applicable national laws and international best practices, including Mongolia's
                         Law on Personal Secrecy and Security.</p>
-                </section>
-                   <br/>
-                <section id="information-we-collect">
-                    <h2>3. Information We Collect</h2>
-                    <br/>
+                </section>)
+                }, 
+                {
+                    title : "3. Information We Collect", 
+                    content : ( <section id="information-we-collect">
+                
                     <b>A. Account Information</b>
                     <ul>
                         <li>Name and username</li>
@@ -125,11 +130,12 @@ image: "/images/privacy-policy-banner.jpg"
                     </ul>
                     <p>These providers process personal data according to their own privacy policies and applicable data
                         protection laws.</p>
-                </section>
-                  <br/>
-                <section id="how-we-use">
-                    <h2>4. How We Use Your Information</h2>
-                    <br/>
+                </section>)
+                }, 
+                {
+                    title : "4. How We Use Your Information", 
+                    content : ( <section id="how-we-use">
+                  
                     <b>A. Service Delivery</b>
                     <ul>
                         <li>Account creation, authentication, and management</li>
@@ -173,11 +179,12 @@ image: "/images/privacy-policy-banner.jpg"
                         <li>Displaying relevant advertisements based on user behavior (with consent where required)</li>
                         <li>Conducting market research</li>
                     </ul>
-                </section>
-                <br/>
-                <section id="legal-basis">
-                    <h2>5. Legal Basis for Processing</h2>
- <br/>
+                </section>)
+                }, 
+                {
+                    title : "5. Legal Basis for Processing", 
+                    content : (<section id="legal-basis">
+                   
                     <b>For Users in GDPR Jurisdictions (EU/EEA)</b>
                     <p>We process personal data based on:</p>
                     <ul>
@@ -201,11 +208,12 @@ image: "/images/privacy-policy-banner.jpg"
                     </ul>
                     <p>Where local law requires explicit opt-in consent for specific processing activities, we obtain
                         such consent before processing.</p>
-                </section>
- <br/>
-                <section id="data-sharing">
-                    <h2>6. Data Sharing and Disclosure</h2>
-                     <br/>
+                </section>)
+                }, 
+                {
+                    title: "6. Data Sharing and Disclosure", 
+                    content : (<section id="data-sharing">
+                    
                     <p>We do not sell your personal data. We may share limited information in these circumstances:</p>
 
                     <b>A. Service Providers</b>
@@ -244,11 +252,12 @@ image: "/images/privacy-policy-banner.jpg"
 
                     <b>E. With Your Consent</b>
                     <p>We may share data with third parties when you provide explicit consent.</p>
-                </section>
- <br/>
-                <section id="data-retention">
-                    <h2>7. Data Retention</h2>
-                     <br/>
+                </section>)
+                }, 
+                {
+                    title: "7. Data Retention", 
+                    content: (  <section id="data-retention">
+                    
                     <p>We retain personal data only as long as necessary to fulfill the purposes described in this
                         Privacy Policy, unless a longer retention period is required by law.</p>
 
@@ -265,11 +274,12 @@ image: "/images/privacy-policy-banner.jpg"
                             resolution</li>
                     </ul>
                     <p>You may request account deletion at any time, subject to legal retention requirements.</p>
-                </section>
- <br/>
-                <section id="your-rights">
-                    <h2>8. Your Privacy Rights</h2>
- <br/>
+                </section>)
+                }, 
+                {
+                    title : "8. Your Privacy Rights", 
+                    content: (<section id="your-rights">
+                    
                     <b>A. Rights Under GDPR (EU/EEA Users)</b>
                     <ul>
                         <li><strong>Access:</strong> Request a copy of your personal data</li>
@@ -305,11 +315,12 @@ image: "/images/privacy-policy-banner.jpg"
                     </ul>
                     <p>We respond to valid requests within <strong>30 days</strong> (or as required by local law). We
                         may require identity verification before processing requests.</p>
-                </section>
- <br/>
-                <section id="data-security">
-                    <h2>9. Data Security</h2>
-                     <br/>
+                </section>)
+                }, 
+                {
+                    title : "9. Data Security", 
+                    content: (<section id="data-security">
+                   
                     <p>We implement technical and organizational measures to protect your personal data:</p>
                     <ul>
                         <li>Encryption for data in transit and at rest</li>
@@ -321,11 +332,12 @@ image: "/images/privacy-policy-banner.jpg"
                     </ul>
                     <p>While we strive to protect your data, no online service can guarantee absolute security. You are
                         responsible for maintaining the confidentiality of your account credentials.</p>
-                </section>
- <br/>
-                <section id="international-transfers">
-                    <h2>10. International Data Transfers</h2>
- <br/>
+                </section>)
+                },
+                {
+                    title : "10. International Data Transfers", 
+                    content : ( <section id="international-transfers">
+           
                     <b>For GDPR Users (EU/EEA)</b>
                     <p>When we transfer personal data outside the EU/EEA, we ensure adequate protection through:</p>
                     <ul>
@@ -337,29 +349,34 @@ image: "/images/privacy-policy-banner.jpg"
                     <b>For Non-GDPR Users</b>
                     <p>We apply safeguards consistent with local data protection requirements and international best
                         practices.</p>
-                </section>
- <br/>
-                <section id="childrens-privacy">
-                    <h2>11. Children's Privacy</h2>
-                     <br/>
+                </section>)
+                },
+                {
+                    title : "11. Children's Privacy", 
+                    content : ( <section id="childrens-privacy">
+                   
                     <p>Vidaki is not intended for individuals under 16 years of age (or the applicable age of digital
                         consent in your jurisdiction).</p>
                     <p>We do not knowingly collect personal data from children. If you believe a child has provided us
                         with personal information, please contact us immediately at <a
                             href="mailto:privacy@vidaki.com">privacy@vidaki.com</a>.</p>
-                </section>
- <br/>
-                <section id="third-party-links">
-                    <h2>12. Third-Party Links and Services</h2>
-                     <br/>
+                </section>)
+                }
+                ,
+                {
+                    title : "12. Third-Party Links and Services", 
+                    content : (<section id="third-party-links">
+                    
                     <p>Our platform may contain links to third-party websites and services. We are not responsible for
                         their privacy practices or content. We encourage you to review the privacy policies of any
                         external websites you visit.</p>
-                </section>
- <br/>
-                <section id="marketing">
-                    <h2>13. Marketing Communications</h2>
- <br/>
+                </section>)
+                }
+                ,
+                {
+                    title : "13. Marketing Communications", 
+                    content : (<section id="marketing">
+                   
                     <b>Transactional Communications</b>
                     <p>We send essential service-related messages (account verification, transaction confirmations) as
                         part of our core service. You cannot opt out of these while maintaining an active account.</p>
@@ -377,11 +394,13 @@ image: "/images/privacy-policy-banner.jpg"
                         <li>Manage preferences in account settings</li>
                         <li>Email <a href="mailto:privacy@vidaki.com">privacy@vidaki.com</a></li>
                     </ul>
-                </section>
- <br/>
-                <section id="automated-decision-making">
-                    <h2>14. Automated Decision-Making</h2>
-                    <br/>
+                </section>)
+                }
+                ,
+                {
+                    title : "14. Automated Decision-Making", 
+                    content : (<section id="automated-decision-making">
+                    
                     <p>We may use automated systems for:</p>
                     <ul>
                         <li>Fraud detection and risk assessment</li>
@@ -391,11 +410,13 @@ image: "/images/privacy-policy-banner.jpg"
                     <p>GDPR users have the right to object to automated decision-making with legal or significant
                         effects, request human review, and receive explanations. Contact <a
                             href="mailto:privacy@vidaki.com">privacy@vidaki.com</a> to exercise these rights.</p>
-                </section>
- <br/>
-                <section id="changes">
-                    <h2>15. Changes to This Privacy Policy</h2>
-                     <br/>
+                </section>)
+                }
+                ,
+                {
+                    title : "15. Changes to This Privacy Policy", 
+                    content : (  <section id="changes">
+                  
                     <p>We may update this Privacy Policy to reflect changes in laws, features, or business practices.
                         When we make material changes:</p>
                     <ul>
@@ -406,11 +427,13 @@ image: "/images/privacy-policy-banner.jpg"
                     </ul>
                     <p>Your continued use of Vidaki after changes take effect constitutes acceptance of the updated
                         policy.</p>
-                </section>
- <br/>
-                <section id="jurisdiction">
-                    <h2>16. Jurisdiction-Specific Provisions</h2>
- <br/>
+                </section>)
+                }
+                ,
+                {
+                    title : "16. Jurisdiction-Specific Provisions", 
+                    content : (  <section id="jurisdiction">
+          
                     <b>Russia</b>
                     <p>Personal data of Russian citizens is processed and stored in compliance with Federal Law No.
                         152-FZ, including data localization requirements.</p>
@@ -426,11 +449,13 @@ image: "/images/privacy-policy-banner.jpg"
                     <b>Other Jurisdictions</b>
                     <p>Where local law imposes additional requirements (data localization, specific consent mechanisms,
                         mandatory registration), we comply with such obligations.</p>
-                </section>
- <br/>
-                <section id="contact">
-                    <h2>17. Contact Information</h2>
-                     <br/>
+                </section>)
+                }
+                ,
+                {
+                    title : "17. Contact Information", 
+                    content : (<section id="contact">
+                   
                     <p><strong>For Privacy Inquiries and Data Requests:</strong></p>
                     <address>
                         Vidaki Data Protection Office<br />
@@ -448,17 +473,25 @@ image: "/images/privacy-policy-banner.jpg"
                         <li>GDPR requests: Within 30 days</li>
                         <li>Other jurisdictions: As required by local law</li>
                     </ul>
-                </section>
- <br/>
-                <section id="closing">
-                    <h2>18. Your Trust, Our Responsibility</h2>
-                     <br/>
+                </section>)
+                }
+                ,
+                {
+                    title : "18. Your Trust, Our Responsibility", 
+                    content : ( <section id="closing">
+                    
                     <p>At Vidaki, we believe privacy is fundamental to trust. We are committed to transparency,
                         security, compliance, and accountability in protecting your personal information.</p>
                     <b>Thank you for trusting Vidaki. Together, we're building a safer, more transparent marketplace
                         across Eurasia.</b>
                     <p class="small">© 2025 Vidaki. All rights reserved.</p>
-                </section>
+                </section>)
+                }
+
+            ]}
+            showTitle="false"
+            />
+   
 
                 <footer>
                     <p class="small">If you would like this policy in another format or language, or need help

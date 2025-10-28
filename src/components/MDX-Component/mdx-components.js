@@ -15,7 +15,14 @@ import OurBlogs from "../LandingPage/OurBlogs";
 import QuickAnswerAccordion from "../LandingPage/QuickAnswerAccordion";
 import WorkProcess from "../LandingPage/WorkProcess";
 import ContactUs from "../PagesComponent/ContactUs/ContactUs";
-
+import InfoAccordion from "../InfoPage/InfoAccordian";
+// icons
+import {
+  FaExclamationTriangle,
+  FaUserTimes,
+  FaFlag,
+  FaBug,
+} from "react-icons/fa";
 export const mdxComponents = {
   WorkProcess,
   OurBlogs,
@@ -33,5 +40,11 @@ export const mdxComponents = {
   WhatWeOffer,
   WhoWePartnerWith,
   ContactUs,
-  QuickAnswerAccordion
+  QuickAnswerAccordion,
+  InfoAccordion,
+  //icons
+  FaExclamationTriangle,
+  FaUserTimes,
+  FaFlag,
+  FaBug,
 };
