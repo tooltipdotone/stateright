@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import bg from "../../../public/assets/NewBG.png";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaTiktok  , FaInstagram } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import googleDownload from "../../../public/assets/Google Download.svg";
 import appleDownload from "../../../public/assets/iOS Download.svg";
@@ -119,9 +119,19 @@ const Footer = () => {
                 </button>
               </a>
 
-              <a href={settings?.linkedin_link}>
+              {/* <a href={settings?.linkedin_link}>
                 <button>
                   <FaLinkedin size={22} />
+                </button>
+              </a> */}
+              <a href={settings?.instagram_link}>
+                <button>
+                  <FaInstagram size={22} />
+                </button>
+              </a>
+              <a href={settings?.tiktok_link}>
+                <button>
+                  <FaTiktok size={22} />
                 </button>
               </a>
             </div>
