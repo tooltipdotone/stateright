@@ -6,7 +6,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import dynamic from 'next/dynamic';
 import { Drawer, Select, Spin } from 'antd'
 import { MdLocationPin } from "react-icons/md";
-import LocationIcon from "../../../public/assets/location-27.svg"
+import LocationIcon from "../../../public/assets/location-28.svg"
 import { FaSearch } from 'react-icons/fa';
 import Link from 'next/link';
 import 'swiper/css';
