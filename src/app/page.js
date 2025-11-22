@@ -9,7 +9,7 @@ export const generateMetadata = async () => {
     );
     const home = response?.data
     return {
-      title: home?.title ? home?.title : process.env.NEXT_PUBLIC_META_TITLE,
+      title: home?.title ? home?.title : process.env.META_TITLE,
       description: home?.description ? home?.description : process.env.NEXT_PUBLIC_META_DESCRIPTION,
       openGraph: {
         images: home?.image ? [home?.image] : [],
