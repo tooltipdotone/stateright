@@ -4,12 +4,18 @@ import axios from 'axios';
 
 export const generateMetadata = async () => {
   try {
-    const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}seo-settings?page=home`
+    // const response = await axios.get(
+    //   `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}seo-settings?page=home`
+    // );
+     const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}seo-settings?page=home`,
+      { cache: "no-store" }
     );
-    const home = response?.data
+
+    const home = await res.json();
+    // const home = response?.data
     return {
-      title: home?.title ? home?.title : process.env.META_TITLE,
+      title: home?.title ? home?.title : process.env.NEXT_PUBLIC_META_TITLE,
       description: home?.description ? home?.description : process.env.NEXT_PUBLIC_META_DESCRIPTION,
       openGraph: {
         images: home?.image ? [home?.image] : [],
