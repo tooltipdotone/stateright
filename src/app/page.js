@@ -1,32 +1,26 @@
 import HomePage from '@/components/Home';
 import Layout from '@/components/Layout/Layout';
 import axios from 'axios';
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-export const generateMetadata = async () => {
-  try {
-    // const response = await axios.get(
-    //   `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}seo-settings?page=home`
-    // );
-     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}seo-settings?page=home`,
-      { cache: "no-store" }
-    );
+export async function generateMetadata() {
+  const res = await fetch(
+    `${process.env.API_URL}${process.env.END_POINT}seo-settings?page=home`,
+    { cache: "no-store" }
+  );
 
-    const home = await res.json();
-    // const home = response?.data
-    return {
-      title: home?.title ? home?.title : process.env.NEXT_PUBLIC_META_TITLE,
-      description: home?.description ? home?.description : process.env.NEXT_PUBLIC_META_DESCRIPTION,
-      openGraph: {
-        images: home?.image ? [home?.image] : [],
-      },
-      keywords: home?.keywords ? home?.keywords : process.env.NEXT_PUBLIC_META_kEYWORDS
-    };
-  } catch (error) {
-    console.error("Error fetching MetaData:", error);
-    return null;
-  }
-};
+  const home = await res.json();
+
+  return {
+    title: home?.title || process.env.META_TITLE,
+    description: home?.description || process.env.META_DESCRIPTION,
+    keywords: home?.keywords || process.env.META_kEYWORDS,
+    openGraph: {
+      images: home?.image ? [home?.image] : [],
+    },
+  };
+}
 
 const fetchCategories = async () => {
   try {
