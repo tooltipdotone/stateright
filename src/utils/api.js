@@ -54,6 +54,7 @@ export const GET_VERIFICATION_STATUS = 'verification-request'
 export const MY_REVIEWS = 'my-review'
 export const RENEW_ITEM = 'renew-item'
 export const ADD_REPORT_REVIEW = 'add-review-report'
+export const GET_LOCALE_BY_IP = 'get-locale-by-ip'
 
 
 
@@ -831,6 +832,12 @@ export const getParentCategoriesApi = {
                 slug
             }
         })
+    },
+}
+// get locale by ip
+export const GetLocaleByIpAPI = {
+    GetLocaleByIp: () => {
+        return Api.get(GET_LOCALE_BY_IP)
     },
 }
 

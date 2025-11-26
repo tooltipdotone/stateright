@@ -269,20 +269,20 @@ export default function ContactUs() {
         </div>
 
            
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="card border-0 shadow bg-transparent">
-                    <div class="card-body p-4">
-                        <h4 class="card-title fw-bold text-danger">⚠️ Emergency Situations</h4>
+        <div className="row justify-content-center">
+            <div className="col-lg-12">
+                <div className="card border-0 shadow bg-transparent">
+                    <div className="card-body p-4">
+                        <h4 className="card-title fw-bold text-danger">⚠️ Emergency Situations</h4>
                         
-                        <h6 class="card-text fw-bold">If you're experiencing immediate danger or criminal activity:</h6>
+                        <h6 className="card-text fw-bold">If you're experiencing immediate danger or criminal activity:</h6>
                         
-                        <ol class="list-group list-group-numbered border-0">
-                            <li class="list-group-item d-flex align-items-start border-0 bg-transparent">
+                        <ol className="list-group list-group-numbered border-0">
+                            <li className="list-group-item d-flex align-items-start border-0 bg-transparent">
                               
                                 <span>Contact local police or emergency services immediately</span>
                             </li>
-                            <li class="list-group-item d-flex align-items-start border-0 bg-transparent">
+                            <li className="list-group-item d-flex align-items-start border-0 bg-transparent">
                                 
                                 <span>Then report the incident to us at safety@vidaki.com</span>
                             </li>

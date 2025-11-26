@@ -1,21 +1,23 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { FeaturedSectionApi, sliderApi } from '@/utils/api'
+import { FeaturedSectionApi, getLanguageApi, GetLocaleByIpAPI, sliderApi } from '@/utils/api'
 import { useDispatch, useSelector } from 'react-redux'
 import { SliderData, setSlider } from '@/redux/reuducer/sliderSlice'
-import { CurrentLanguageData } from '@/redux/reuducer/languageSlice'
+import { CurrentLanguageData, setCurrentLanguage } from '@/redux/reuducer/languageSlice'
 import { settingsData } from '@/redux/reuducer/settingSlice'
 import FeaturedSectionsSkeleton from '../Skeleton/FeaturedSectionsSkeleton'
-import SliderSkeleton from '../Skeleton/Sliderskeleton'
-import OfferSlider from './OfferSlider'
 import PopularCategories from './PopularCategories'
 import FeaturedSections from './FeaturedSections'
 import HomeAllItem from './HomeAllItem'
 import { getKilometerRange } from '@/redux/reuducer/locationSlice'
-import SearchComponent from './SearchComponent'
+import { useParams, useRouter,usePathname  } from 'next/navigation'
+import toast from 'react-hot-toast'
 
 const HomePage = () => {
     const dispatch = useDispatch()
+    const params = useParams()
+    const router = useRouter()
+    const pathname = usePathname()
     const slider = useSelector(SliderData);
     const KmRange = useSelector(getKilometerRange)
     const [IsLoading, setIsLoading] = useState(false)
@@ -47,6 +49,28 @@ const HomePage = () => {
             alt: 'This is the third offer.'
         }
     ];
+
+    useEffect(() => {
+        const getGeoLocation = async () => {
+          const response = await GetLocaleByIpAPI.GetLocaleByIp();
+          const data = response?.data?.data;
+          const countryCode = data?.country_code;
+          const availableLanguage = settings?.languages?.find((l) => l.code === countryCode?.toLowerCase());
+          if(availableLanguage){
+            router.push(availableLanguage.code)
+            const res = await getLanguageApi.getLanguage({ language_code: availableLanguage.code, type: 'web' });
+            if (res?.data?.error === true) {
+                toast.error(res?.data?.message)
+            }
+            else {
+                dispatch(setCurrentLanguage(res?.data?.data));
+            }
+          }
+        }
+        if(!params?.country && pathname === "/"){
+            getGeoLocation();
+        }
+    },[])
 
     useEffect(() => {
         const fetchSliderData = async () => {
@@ -112,7 +136,6 @@ const HomePage = () => {
 
     return (
         <>
-            {/* {IsLoading ? <SliderSkeleton /> : <OfferSlider sliderData={slider.length > 0 ? slider : dummySliderData} />} */}
             <PopularCategories />
             {IsFeaturedLoading ? <FeaturedSectionsSkeleton /> : <FeaturedSections featuredData={featuredData} setFeaturedData={setFeaturedData} cityData={cityData} allEmpty={allEmpty} />}
             <HomeAllItem cityData={cityData} allEmpty={allEmpty} />
