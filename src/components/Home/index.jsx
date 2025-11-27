@@ -9,9 +9,10 @@ import FeaturedSectionsSkeleton from '../Skeleton/FeaturedSectionsSkeleton'
 import PopularCategories from './PopularCategories'
 import FeaturedSections from './FeaturedSections'
 import HomeAllItem from './HomeAllItem'
-import { getKilometerRange } from '@/redux/reuducer/locationSlice'
+import { getKilometerRange, saveCity } from '@/redux/reuducer/locationSlice'
 import { useParams, useRouter,usePathname  } from 'next/navigation'
 import toast from 'react-hot-toast'
+import { getCountryLatLng } from '@/utils'
 
 const HomePage = () => {
     const dispatch = useDispatch()
@@ -59,6 +60,10 @@ const HomePage = () => {
           if(availableLanguage){
             router.push(availableLanguage.code)
             const res = await getLanguageApi.getLanguage({ language_code: availableLanguage.code, type: 'web' });
+            const cityData = await getCountryLatLng(data.country_name);
+            if(cityData){
+                saveCity(cityData)
+            }
             if (res?.data?.error === true) {
                 toast.error(res?.data?.message)
             }

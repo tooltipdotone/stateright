@@ -861,3 +861,29 @@ export function getRoundedRating(rating) {
 export function convertPrice(usdPrice, rate) {
   return (usdPrice * rate).toFixed(2)
 }
+
+export const getCountryLatLng = async (countryName) => {
+  return new Promise((resolve, reject) => {
+    const geocoder = new window.google.maps.Geocoder();
+
+    geocoder.geocode({ address: countryName }, (results, status) => {
+      if (status === "OK" && results[0]) {
+        const result = results[0];
+
+        const countryCode = result.address_components.find(c =>
+          c.types.includes("country")
+        )?.short_name;
+
+        resolve({
+          city: result.formatted_address,
+          country: countryName,
+          countryCode,
+          lat: result.geometry.location.lat(),
+          long: result.geometry.location.lng(),
+        });
+      } else {
+        reject("Geocoder failed: " + status);
+      }
+    });
+  });
+};
