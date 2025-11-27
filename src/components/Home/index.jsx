@@ -10,7 +10,7 @@ import PopularCategories from './PopularCategories'
 import FeaturedSections from './FeaturedSections'
 import HomeAllItem from './HomeAllItem'
 import { getKilometerRange, saveCity } from '@/redux/reuducer/locationSlice'
-import { useParams, useRouter,usePathname  } from 'next/navigation'
+import { useParams, useRouter,usePathname ,useSearchParams } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { getCountryLatLng } from '@/utils'
 
@@ -19,6 +19,7 @@ const HomePage = () => {
     const params = useParams()
     const router = useRouter()
     const pathname = usePathname()
+    const searchParams  = useSearchParams()
     const slider = useSelector(SliderData);
     const KmRange = useSelector(getKilometerRange)
     const [IsLoading, setIsLoading] = useState(false)
@@ -58,11 +59,12 @@ const HomePage = () => {
           const countryCode = data?.country_code;
           const availableLanguage = settings?.languages?.find((l) => l.code === countryCode?.toLowerCase());
           if(availableLanguage){
-            router.push(availableLanguage.code)
             const res = await getLanguageApi.getLanguage({ language_code: availableLanguage.code, type: 'web' });
-            const cityData = await getCountryLatLng(data.country_name);
-            if(cityData){
-                saveCity(cityData)
+            if(!searchParams.get('from')){
+                const cityData = await getCountryLatLng(data.country_name);
+                if(cityData){
+                    saveCity(cityData)
+                }
             }
             if (res?.data?.error === true) {
                 toast.error(res?.data?.message)
@@ -70,6 +72,7 @@ const HomePage = () => {
             else {
                 dispatch(setCurrentLanguage(res?.data?.data));
             }
+            router.push(availableLanguage.code)
           }
         }
         if(!params?.country && pathname === "/"){

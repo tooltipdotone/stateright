@@ -283,7 +283,7 @@ const LocationModal = ({ IsLocationModalOpen, OnHide }) => {
             if (isValidLocation || (cityData && cityData.lat && cityData.long)) {
                 dispatch(setKilometerRange(KmRange))
                 saveCity(selectedCity);
-                router.push('/');
+                router.push('/?from=user-selected');
                 OnHide();
             } else {
                 toast.error("Please Select valid location")
