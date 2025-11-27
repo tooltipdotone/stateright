@@ -10,7 +10,7 @@ import PopularCategories from './PopularCategories'
 import FeaturedSections from './FeaturedSections'
 import HomeAllItem from './HomeAllItem'
 import { getKilometerRange, saveCity } from '@/redux/reuducer/locationSlice'
-import { useParams, useRouter,usePathname ,useSearchParams } from 'next/navigation'
+import { useParams, useRouter,usePathname  } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { getCountryLatLng } from '@/utils'
 
@@ -19,7 +19,6 @@ const HomePage = () => {
     const params = useParams()
     const router = useRouter()
     const pathname = usePathname()
-    const searchParams  = useSearchParams()
     const slider = useSelector(SliderData);
     const KmRange = useSelector(getKilometerRange)
     const [IsLoading, setIsLoading] = useState(false)
@@ -60,10 +59,12 @@ const HomePage = () => {
           const availableLanguage = settings?.languages?.find((l) => l.code === countryCode?.toLowerCase());
           if(availableLanguage){
             const res = await getLanguageApi.getLanguage({ language_code: availableLanguage.code, type: 'web' });
-            if(!searchParams.get('from')){
+            const setAddressFirstOnIp = localStorage.getItem('set_address_first_on_ip')
+            if(!setAddressFirstOnIp){
                 const cityData = await getCountryLatLng(data.country_name);
                 if(cityData){
                     saveCity(cityData)
+                    localStorage.setItem('set_address_first_on_ip','true')
                 }
             }
             if (res?.data?.error === true) {

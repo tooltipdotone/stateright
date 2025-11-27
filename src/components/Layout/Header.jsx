@@ -370,7 +370,7 @@ const Header = () => {
                 <div className="container">
                     <div className="left_side">
                         <div className="nav_logo">
-                            <Link href="/?from=web_app">
+                            <Link href="/">
                                 <Image src='/public/assets/logo.svg' alt='logo' width={0} height={0} className="header_logo_2" onErrorCapture={placeholderImage} />
                             </Link>
                         </div>
