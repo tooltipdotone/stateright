@@ -56,7 +56,30 @@ const HomePage = () => {
           const response = await GetLocaleByIpAPI.GetLocaleByIp();
           const data = response?.data?.data;
           const countryCode = data?.country_code;
-          const availableLanguage = settings?.languages?.find((l) => l.code === countryCode?.toLowerCase());
+          let availableLanguage = settings?.languages?.find((l) => l.code === countryCode?.toLowerCase());
+          if(!availableLanguage){
+            const languageCodeMapping = {
+                "AL" : "sq",
+                "AM" : "hy",
+                "BY" : "be",
+                "BA" : "bs",
+                "GR" : "el",
+                "CZ" : "cs",
+                "DK" : "da",
+                "EE" : "et",
+                "GE" : "ka",
+                "KZ" : "kk",
+                "ME" : "cnr",
+                "RS" : "sr",
+                "SE" : "sv",
+                "TJ" : "tg",
+                "TM" : "tk",
+                "UA" : "uk",
+                "PK" : "ps"
+            }
+            const getAppropriateLanguageCode = languageCodeMapping[countryCode] || 'en';
+            availableLanguage = settings?.languages?.find((l) => l.code === getAppropriateLanguageCode);
+          }
           if(availableLanguage){
             const res = await getLanguageApi.getLanguage({ language_code: availableLanguage.code, type: 'web' });
             const setAddressFirstOnIp = localStorage.getItem('set_address_first_on_ip')
