@@ -26,6 +26,9 @@ export const generateMetadata = async () => {
           url: favicon,
         },
       ],
+      other: {
+        'google-site-verification': 'nqSJ5Bfuopq6wMLUO3gg1393BDbTzAnxjr-4LLezT0A'
+      },
       placeApiKey,
     };
   } catch (error) {
