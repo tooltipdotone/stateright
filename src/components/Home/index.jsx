@@ -75,7 +75,8 @@ const HomePage = () => {
                 "TJ" : "tg",
                 "TM" : "tk",
                 "UA" : "uk",
-                "PK" : "ps"
+                "PK" : "ps",
+                "SI" : "sk"
             }
             const getAppropriateLanguageCode = languageCodeMapping[countryCode] || 'en';
             availableLanguage = settings?.languages?.find((l) => l.code === getAppropriateLanguageCode);
