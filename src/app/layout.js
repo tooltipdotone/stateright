@@ -13,7 +13,7 @@ export const generateMetadata = async () => {
       `${process.env.NEXT_PUBLIC_API_URL}${process.env.NEXT_PUBLIC_END_POINT}get-system-settings`,
       {
         headers: {
-          Accept: "application/json", 
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
       }
@@ -41,7 +41,12 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" web-version={process.env.NEXT_PUBLIC_WEB_VERSION}>
       <head>
-        <meta name="google-site-verification" content="nqSJ5Bfuopq6wMLUO3gg1393BDbTzAnxjr-4LLezT0A" />
+        <meta
+          name="google-site-verification"
+          content="nqSJ5Bfuopq6wMLUO3gg1393BDbTzAnxjr-4LLezT0A"
+        />
+      </head>
+      <Head>
         <link
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
           rel="stylesheet"
@@ -55,7 +60,7 @@ export default async function RootLayout({ children }) {
           defer
           src={`https://maps.googleapis.com/maps/api/js?key=${placeApiKey}&libraries=places&loading=async`}
         ></script>
-      </head>
+      </Head>
       <body>
         {/* <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxx"
           crossOrigin="anonymous" strategy="afterInteractive" /> */}
